@@ -92,7 +92,7 @@ Until `NEXT_PUBLIC_SITE_LIVE=true`, every page shows a "Redesign preview" banner
 ## Launch checklist (content marked `TODO(client)` in code)
 
 - [ ] Real photos with media releases. Swap the `PhotoSlot` placeholders for `next/image`.
-- [ ] Official logo: drop it in `public/brand/` and set `org.logo.src` (plus its width and height) in `src/content/site.ts`. Optionally set `invertedSrc` to a white version for the dark footer.
+- [x] Official logo: drop it in `public/brand/` and set `org.logo.src` (plus its width and height) in `src/content/site.ts`. Optionally set `invertedSrc` to a white version for the dark footer.
 - [ ] Confirm the summer and early-learning program copy (`src/content/site.ts`)
 - [ ] Per-school program list for the Families page (95+ sites)
 - [ ] Office hours and a general contact form

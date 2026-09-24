@@ -7,8 +7,13 @@ export function Logo({ inverted = false }: { inverted?: boolean }) {
   const src = inverted ? (org.logo.invertedSrc ?? org.logo.src) : org.logo.src;
   if (src) {
     return (
-      <Link href="/" aria-label={`${org.shortName} — ${org.name}, home`} className={inverted && !org.logo.invertedSrc ? "rounded-xl bg-white p-2" : undefined}>
-        <Image src={src} alt={org.name} width={org.logo.width} height={org.logo.height} priority className="h-11 w-auto" />
+      <Link
+        href="/"
+        aria-label={`${org.shortName} — ${org.name}, home`}
+        // The logo has dark lettering, so give it a light plate on dark backgrounds unless a white version exists.
+        className={`inline-block shrink-0 ${inverted && !org.logo.invertedSrc ? "rounded-xl bg-white px-3 py-2.5" : ""}`}
+      >
+        <Image src={src} alt={org.name} width={org.logo.width} height={org.logo.height} priority className="block h-12 w-auto" />
       </Link>
     );
   }

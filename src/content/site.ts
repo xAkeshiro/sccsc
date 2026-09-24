@@ -29,7 +29,7 @@ export const org = {
    * plus its pixel size; until then the header shows a text wordmark.
    * TODO(client): supply the logo file (SVG preferred, or a PNG at least 400px wide).
    */
-  logo: { src: null as string | null, width: 400, height: 120, invertedSrc: null as string | null },
+  logo: { src: "/brand/sccsc-logo.png" as string | null, width: 475, height: 127, invertedSrc: null as string | null },
   social: {
     facebook: "https://www.facebook.com/SacChinese/",
     linkedin: "https://www.linkedin.com/company/sacramento-chinese-community-service-center",
