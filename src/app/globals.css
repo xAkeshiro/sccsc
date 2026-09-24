@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream-50: #fffcf7;
+  --color-cream-100: #fbf6ee;
+  --color-cream-200: #f3eadb;
+  --color-cream-300: #e8dcc6;
+
+  --color-ink-900: #13202a;
+  --color-ink-700: #33424e;
+  --color-ink-500: #5e6b75;
+  --color-ink-300: #a8b1b8;
+  --color-ink-100: #e4e7ea;
+
+  --color-jade-50: #eaf6f2;
+  --color-jade-100: #cfebe2;
+  --color-jade-200: #9fd6c5;
+  --color-jade-500: #179b7e;
+  --color-jade-600: #0e8067;
+  --color-jade-700: #0b6653;
+  --color-jade-800: #0a4f42;
+  --color-jade-900: #083b32;
+
+  --color-vermilion-50: #fdede8;
+  --color-vermilion-100: #fbd5c9;
+  --color-vermilion-500: #e4572e;
+  --color-vermilion-600: #c9431d;
+  --color-vermilion-700: #a83616;
+
+  --color-sun-100: #fdf0d2;
+  --color-sun-300: #f8cf6f;
+  --color-sun-400: #f6b93b;
+
+  --color-lake-100: #dff0f6;
+  --color-lake-300: #9fd3e6;
+  --color-lake-700: #1f5f78;
+
+  --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-figtree), ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-cream-100 text-ink-900 font-sans antialiased;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display tracking-tight text-balance;
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-jade-600;
+  }
+  ::selection {
+    @apply bg-sun-300 text-ink-900;
+  }
+}
+
+/* Fretwork lattice — a quiet nod to the Center's roots, used as a texture on color blocks. */
+@utility pattern-lattice-light {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'%3E%3Cpath d='M0 14h14V0M28 0v14h14v14H28v14h14v14M0 42h14v14M56 14H42M56 42H42M14 28h0' fill='none' stroke='%23ffffff' stroke-opacity='.09' stroke-width='2'/%3E%3C/svg%3E");
+}
+@utility pattern-lattice-dark {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'%3E%3Cpath d='M0 14h14V0M28 0v14h14v14H28v14h14v14M0 42h14v14M56 14H42M56 42H42' fill='none' stroke='%230b6653' stroke-opacity='.08' stroke-width='2'/%3E%3C/svg%3E");
+}
+
+/* Form controls shared by the portal and admin. */
+@utility field {
+  @apply block w-full rounded-xl border border-ink-100 bg-white px-3.5 py-2.5 text-base text-ink-900 shadow-sm placeholder:text-ink-300 focus:border-jade-600 focus:outline-none focus:ring-2 focus:ring-jade-200;
+}
+@utility field-label {
+  @apply mb-1.5 block text-sm font-semibold text-ink-900;
+}
