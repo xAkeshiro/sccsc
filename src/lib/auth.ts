@@ -26,7 +26,7 @@ function allowedHosts() {
 function createAuth() {
   return betterAuth({
     appName: "The Center — Careers",
-    baseURL: process.env.BETTER_AUTH_URL ?? {
+    baseURL: process.env.BETTER_AUTH_URL?.trim() || {
       allowedHosts: allowedHosts(),
       protocol: process.env.NODE_ENV === "production" ? "https" : "auto",
     },

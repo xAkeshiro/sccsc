@@ -1,13 +1,14 @@
 import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, Figtree } from "next/font/google";
 import { isLive, org } from "@/content/site";
+import { siteUrl } from "@/lib/site-url";
 import "./globals.css";
 
 const display = Bricolage_Grotesque({ variable: "--font-bricolage", subsets: ["latin"] });
 const sans = Figtree({ variable: "--font-figtree", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://sccsc.org"),
+  metadataBase: siteUrl(),
   title: {
     default: `${org.shortName} | ${org.name}`,
     template: `%s | ${org.shortName} — ${org.acronym}`,
