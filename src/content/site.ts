@@ -51,11 +51,11 @@ export const org = {
  */
 export const heroPhotos = [
   // Tall photo on the left (portrait, about 4:5, e.g. 1200×1500).
-  { src: null as string | null, alt: "Students building a STEM project" },
+  { src: "/photos/example-3.jpg" as string | null, alt: "Three smiling students in aprons at a school event" },
   // Top-right square (e.g. 1000×1000).
-  { src: null as string | null, alt: "Team Leader reading with kids" },
+  { src: "/photos/example-1.jpg" as string | null, alt: "A Team Leader helping students with an activity at a classroom table" },
   // Bottom-right square (e.g. 1000×1000).
-  { src: null as string | null, alt: "Families at pick-up" },
+  { src: "/photos/example-2.png" as string | null, alt: "A staff member smiling as she talks with students at a lunch table" },
 ];
 
 export const stats = [
