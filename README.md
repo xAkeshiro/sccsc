@@ -73,18 +73,23 @@ Import the repo in Vercel (framework preset: Next.js; defaults are fine) and dep
 
 You can force demo mode locally with `DEMO_MODE=true npm run dev`.
 
-### Full mode (real database)
+### Full mode (Supabase)
 
-1. **Add a database:** in the project, go to **Storage → Create → Neon (Postgres)** and connect it to all environments. This sets `DATABASE_URL`.
-2. **Add environment variables:**
-   - `BETTER_AUTH_SECRET`: generate with `openssl rand -base64 32` (**required** once `DATABASE_URL` is set; the portal stays offline without it)
-   - `NEXT_PUBLIC_SITE_URL`: e.g. `https://sccsc.org`
-3. **Redeploy.** Demo mode switches off automatically, and the build runs `db:migrate` automatically when `DATABASE_URL` is set.
-4. **Create the real HR admin** (run from your machine against the production DB):
-   ```bash
-   DATABASE_URL='<neon url>' ADMIN_PASSWORD='<strong password>' npm run admin:create -- hr@sccsc.org "HR Team"
+1. **Get the connection string.** In Supabase, open the project and click **Connect** at the top. Choose **Transaction pooler** (port `6543`), copy the URI and replace `[YOUR-PASSWORD]` with the database password. If the password has special characters (`@ : / ? # %`), URL-encode them. If you've lost it, reset it under **Project Settings → Database**.
+2. **Add environment variables in Vercel** under **Settings → Environment Variables**, for Production and Preview:
+   - `DATABASE_URL`: the pooler URI from step 1
+   - `BETTER_AUTH_SECRET`: a random string of 32+ characters (`openssl rand -base64 32`)
+   - `NEXT_PUBLIC_SITE_URL`: `https://sccsc.org` (optional for now)
+3. **Redeploy** from **Deployments → ⋯ → Redeploy**. The build log should say `✓ Migrations applied to DATABASE_URL`. That creates every table and turns on Row Level Security, so Supabase's public API can't read them; the app connects as the table owner and is unaffected. The yellow banner switches from "Demo site" to "Redesign preview".
+4. **Check Supabase → Table Editor.** You should see `jobs`, `applications`, `user` and the other tables, each marked RLS enabled.
+5. **Make yourself an admin.** Sign up on the site at `/signup`, then in **Supabase → SQL Editor** run:
+   ```sql
+   update "user" set role = 'admin' where email = 'you@example.com';
    ```
-5. **Add job postings** at `/admin/jobs/new`. Production builds only migrate and never seed, so the live database starts empty. For a demo, `DATABASE_URL=... npm run db:seed` inserts the 5 sample postings (only when the jobs table is empty). Close them from `/admin/jobs` when you're done.
+   Sign out and in again, then open `/admin`. From a terminal, `DATABASE_URL=… ADMIN_PASSWORD=… npm run admin:create -- email "Name"` does the same.
+6. **Add job postings** at `/admin/jobs/new`. The real database starts empty. To load the 5 sample postings for a demo, run `DATABASE_URL=… npm run db:seed` from a terminal.
+
+Previews and production share one database unless you add a second Supabase project for previews, which is recommended before real applicants arrive.
 
 Preview deployments trust their own `*.vercel.app` hostnames for auth automatically. For a custom domain, add it to `AUTH_ALLOWED_HOSTS` (or set `BETTER_AUTH_URL`).
 

@@ -8,8 +8,7 @@
  */
 import { drizzle as drizzlePglite } from "drizzle-orm/pglite";
 import { drizzle as drizzlePostgres } from "drizzle-orm/postgres-js";
-import postgres from "postgres";
-import { openLocalPglite, type Database } from "../src/db";
+import { createPostgresClient, openLocalPglite, type Database } from "../src/db";
 import * as schema from "../src/db/schema";
 import { upsertAdmin } from "../src/db/admin";
 
@@ -23,7 +22,7 @@ async function main() {
   const password = process.env.ADMIN_PASSWORD;
 
   if (process.env.DATABASE_URL) {
-    const client = postgres(process.env.DATABASE_URL, { prepare: false, max: 1 });
+    const client = createPostgresClient(process.env.DATABASE_URL, { max: 1 });
     await upsertAdmin(drizzlePostgres(client, { schema }), { email, name, password });
     await client.end();
   } else {

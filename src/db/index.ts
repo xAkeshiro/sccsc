@@ -28,14 +28,22 @@ export function isDemoMode() {
   return Boolean(process.env.VERCEL) || process.env.DEMO_MODE === "true";
 }
 
+/**
+ * postgres.js client for a hosted database (Supabase, Neon…). Uses TLS for anything but a local
+ * server, and `prepare: false` so it works through transaction poolers like Supabase's (port 6543).
+ */
+export function createPostgresClient(url: string, options: postgres.Options<Record<string, never>> = {}) {
+  const local = /@(localhost|127\.0\.0\.1)(:|\/)/.test(url);
+  return postgres(url, { prepare: false, ssl: local ? false : "require", ...options });
+}
+
 type DbGlobals = { __sccscDb?: Database; __sccscDbReady?: Promise<void> };
 const globalForDb = globalThis as unknown as DbGlobals;
 
 function createDatabase(): Database {
   const url = process.env.DATABASE_URL?.trim();
   if (url) {
-    // `prepare: false` keeps us compatible with pooled (PgBouncer-style) connection strings such as Neon's.
-    return drizzlePostgres(postgres(url, { prepare: false }), { schema });
+    return drizzlePostgres(createPostgresClient(url), { schema });
   }
   // The PGlite and postgres-js Drizzle clients share the same query-builder API.
   const client = isDemoMode() ? new PGlite() : openLocalPglite();

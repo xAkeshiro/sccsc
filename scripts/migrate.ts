@@ -8,8 +8,7 @@ import { drizzle as drizzlePglite } from "drizzle-orm/pglite";
 import { migrate as migratePglite } from "drizzle-orm/pglite/migrator";
 import { drizzle as drizzlePostgres } from "drizzle-orm/postgres-js";
 import { migrate as migratePostgres } from "drizzle-orm/postgres-js/migrator";
-import postgres from "postgres";
-import { LOCAL_DB_DIR, openLocalPglite } from "../src/db";
+import { LOCAL_DB_DIR, createPostgresClient, openLocalPglite } from "../src/db";
 import * as schema from "../src/db/schema";
 import { seedIfEmpty } from "../src/db/seed";
 
@@ -20,7 +19,7 @@ async function main() {
   const url = process.env.DATABASE_URL;
 
   if (url) {
-    const client = postgres(url, { prepare: false, max: 1, onnotice: () => {} });
+    const client = createPostgresClient(url, { max: 1, onnotice: () => {} });
     const db = drizzlePostgres(client, { schema });
     await migratePostgres(db, { migrationsFolder });
     console.log("✓ Migrations applied to DATABASE_URL");
