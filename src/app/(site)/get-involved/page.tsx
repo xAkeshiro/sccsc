@@ -58,10 +58,10 @@ export default function GetInvolvedPage() {
         <Container>
           <SectionHeading align="center" eyebrow="Give & partner" title="Invest in Sacramento's kids and families" />
           <div className="mx-auto mt-10 grid max-w-4xl gap-5 md:grid-cols-2">
-            <div className="rounded-3xl bg-vermilion-600 p-8 text-white">
+            <div className="rounded-3xl bg-brand-600 p-8 text-white">
               <Gift className="size-8 text-sun-300" />
               <h3 className="mt-4 text-2xl font-bold text-white">Make a gift</h3>
-              <p className="mt-2 text-vermilion-50">
+              <p className="mt-2 text-brand-50">
                 Donations support programs for immigrant, refugee and underserved families that public funding doesn&apos;t
                 fully cover.
               </p>

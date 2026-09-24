@@ -56,7 +56,7 @@ export default function FamiliesPage() {
           <div className="mt-10 grid gap-5 md:grid-cols-2">
             {districts.map((d) => (
               <article key={d.id} id={d.id} className="scroll-mt-28 rounded-3xl bg-white p-7 ring-1 ring-ink-100">
-                <p className="font-display text-3xl font-extrabold text-jade-700">{d.short}</p>
+                <p className="font-display text-3xl font-extrabold text-brand-600">{d.short}</p>
                 <h3 className="mt-1 text-xl font-bold">{d.name} School District</h3>
                 <p className="mt-3 text-ink-700">{d.blurb}</p>
                 <div className="mt-6 flex flex-wrap gap-3">

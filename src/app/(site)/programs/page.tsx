@@ -36,7 +36,7 @@ export default function ProgramsPage() {
               className={`aspect-[4/3] ${i % 2 === 1 ? "lg:order-2" : ""}`}
             />
             <div>
-              <p className="text-sm font-bold uppercase tracking-[0.14em] text-vermilion-600">{p.audience}</p>
+              <p className="text-sm font-bold uppercase tracking-[0.14em] text-brand-600">{p.audience}</p>
               <h2 className="mt-2 text-3xl font-bold sm:text-4xl">{p.name}</h2>
               <p className="mt-1 text-lg font-medium text-ink-500">{p.tagline}</p>
               <p className="mt-5 text-lg leading-relaxed text-ink-700">{p.description}</p>

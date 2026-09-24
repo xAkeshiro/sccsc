@@ -80,7 +80,7 @@ export function AuthForm({ mode, next }: { mode: "login" | "signup"; next: strin
       </div>
 
       {error && (
-        <p role="alert" className="rounded-xl bg-vermilion-50 px-4 py-3 text-sm font-medium text-vermilion-700">
+        <p role="alert" className="rounded-xl bg-brand-50 px-4 py-3 text-sm font-medium text-brand-700">
           {error}
         </p>
       )}

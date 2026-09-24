@@ -37,7 +37,7 @@ export default async function ApplyPage({ params }: PageProps<"/careers/[slug]/a
         <ArrowLeft className="size-4" /> Back to job details
       </Link>
       <div className="mx-auto mt-6 max-w-3xl">
-        <p className="text-sm font-bold uppercase tracking-[0.14em] text-vermilion-600">Application</p>
+        <p className="text-sm font-bold uppercase tracking-[0.14em] text-brand-600">Application</p>
         <h1 className="mt-2 text-3xl font-bold sm:text-4xl">{job.title}</h1>
 
         {existing ? (

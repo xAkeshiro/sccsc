@@ -13,12 +13,13 @@ const buttonBase =
   "inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-60";
 
 const buttonVariants = {
-  primary: "bg-jade-700 text-white hover:bg-jade-800",
-  accent: "bg-vermilion-600 text-white hover:bg-vermilion-700",
+  primary: "bg-brand-600 text-white hover:bg-brand-700",
+  accent: "bg-brand-600 text-white hover:bg-brand-700",
+  jade: "bg-jade-700 text-white hover:bg-jade-800",
   secondary: "border border-ink-100 bg-white text-ink-900 hover:border-ink-300",
-  light: "bg-white text-jade-800 hover:bg-cream-100",
+  light: "bg-white text-ink-900 hover:bg-cream-100",
   ghost: "text-jade-700 hover:bg-jade-50",
-  danger: "border border-vermilion-100 bg-white text-vermilion-700 hover:bg-vermilion-50",
+  danger: "border border-brand-100 bg-white text-brand-700 hover:bg-brand-50",
 } as const;
 
 const buttonSizes = {
@@ -43,7 +44,7 @@ export function Button({ variant, size, className, ...props }: ComponentProps<"b
 
 export function Eyebrow({ children, className }: { children: ReactNode; className?: string }) {
   return (
-    <p className={cx("text-sm font-bold uppercase tracking-[0.14em] text-vermilion-600", className)}>{children}</p>
+    <p className={cx("text-sm font-bold uppercase tracking-[0.14em] text-brand-600", className)}>{children}</p>
   );
 }
 
@@ -72,7 +73,7 @@ export function SectionHeading({
 const photoTones = {
   jade: "from-jade-200 via-jade-100 to-lake-100",
   sun: "from-sun-300 via-sun-100 to-cream-200",
-  vermilion: "from-vermilion-100 via-cream-200 to-sun-100",
+  vermilion: "from-brand-100 via-cream-200 to-sun-100",
   lake: "from-lake-300 via-lake-100 to-jade-100",
 } as const;
 
@@ -100,7 +101,6 @@ export function PhotoSlot({
         className,
       )}
     >
-      <div className="pattern-lattice-dark absolute inset-0" />
       <span className="absolute bottom-3 left-3 rounded-full bg-white/80 px-3 py-1 text-xs font-medium text-ink-700 backdrop-blur">
         Photo: {label}
       </span>
@@ -113,7 +113,7 @@ export function Badge({ children, tone = "jade" }: { children: ReactNode; tone?:
     jade: "bg-jade-50 text-jade-800 ring-jade-100",
     sun: "bg-sun-100 text-ink-900 ring-sun-300/60",
     ink: "bg-ink-100/60 text-ink-700 ring-ink-100",
-    vermilion: "bg-vermilion-50 text-vermilion-700 ring-vermilion-100",
+    vermilion: "bg-brand-50 text-brand-700 ring-brand-100",
     lake: "bg-lake-100 text-lake-700 ring-lake-300/60",
   };
   return (
@@ -135,8 +135,7 @@ export function PageHero({
   children?: ReactNode;
 }) {
   return (
-    <section className="relative overflow-hidden bg-jade-800 text-white">
-      <div className="pattern-lattice-light absolute inset-0" />
+    <section className="relative overflow-hidden border-b-8 border-brand-600 bg-jade-800 text-white">
       <Container className="relative py-16 sm:py-20">
         {eyebrow && <p className="text-sm font-bold uppercase tracking-[0.14em] text-sun-300">{eyebrow}</p>}
         <h1 className="mt-3 max-w-3xl text-4xl font-bold sm:text-5xl">{title}</h1>

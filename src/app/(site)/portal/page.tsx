@@ -41,7 +41,7 @@ export default async function PortalPage({ searchParams }: PageProps<"/portal">)
     <Container className="py-12 sm:py-16">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <p className="text-sm font-bold uppercase tracking-[0.14em] text-vermilion-600">Applicant portal</p>
+          <p className="text-sm font-bold uppercase tracking-[0.14em] text-brand-600">Applicant portal</p>
           <h1 className="mt-2 text-3xl font-bold sm:text-4xl">Hi, {user.name.split(" ")[0]}</h1>
           <p className="mt-1 text-ink-700">{user.email}</p>
         </div>

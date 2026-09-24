@@ -72,7 +72,7 @@ export default async function AdminApplications({ searchParams }: PageProps<"/ad
             ))}
           </select>
         </label>
-        <button type="submit" className="rounded-xl bg-jade-700 px-5 py-2.5 font-semibold text-white hover:bg-jade-800">
+        <button type="submit" className="rounded-xl bg-brand-600 px-5 py-2.5 font-semibold text-white hover:bg-brand-700">
           Filter
         </button>
         {(status || jobId) && (

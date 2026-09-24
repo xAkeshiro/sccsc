@@ -18,7 +18,7 @@ const pathways = [
     title: "I want to work here",
     body: "Team Leader, coordinator and leadership roles at schools near you. Apply online in minutes.",
     cta: "See open roles",
-    tone: "bg-vermilion-50 text-vermilion-700",
+    tone: "bg-brand-50 text-brand-700",
   },
   {
     href: "/get-involved#volunteer",
@@ -43,12 +43,11 @@ export default function HomePage() {
     <>
       {/* Hero */}
       <section className="relative overflow-hidden">
-        <div className="pattern-lattice-dark absolute inset-0 opacity-60" />
         <Container className="relative grid items-center gap-12 py-14 sm:py-20 lg:grid-cols-[1.1fr_1fr] lg:py-24">
           <div>
             <Eyebrow>Sacramento · Since {org.founded}</Eyebrow>
             <h1 className="mt-4 text-5xl font-extrabold leading-[1.02] text-ink-900 sm:text-6xl lg:text-7xl">
-              Where kids learn, grow and <span className="text-jade-700">belong</span> — after the bell.
+              Where kids learn, grow and <span className="text-brand-600">belong</span> — after the bell.
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink-700 sm:text-xl">
               {org.shortName} runs before-school, after-school and summer programs at 95+ schools across four
@@ -73,7 +72,7 @@ export default function HomePage() {
               </div>
             </div>
             <div className="absolute -bottom-5 -left-3 hidden rounded-2xl bg-white px-5 py-4 shadow-xl ring-1 ring-ink-100 sm:-left-6 sm:block">
-              <p className="font-display text-3xl font-extrabold text-jade-700">13,000+</p>
+              <p className="font-display text-3xl font-extrabold text-brand-600">13,000+</p>
               <p className="text-sm font-medium text-ink-500">students every school day</p>
             </div>
           </div>
@@ -81,12 +80,12 @@ export default function HomePage() {
       </section>
 
       {/* Stats */}
-      <section aria-label="Our reach" className="bg-jade-800 text-white">
+      <section aria-label="Our reach" className="bg-brand-600 text-white">
         <Container className="grid grid-cols-2 gap-8 py-12 lg:grid-cols-4">
           {stats.map((s) => (
             <div key={s.label}>
-              <p className="font-display text-4xl font-extrabold text-sun-300 sm:text-5xl">{s.value}</p>
-              <p className="mt-1 text-sm font-medium text-jade-50/90 sm:text-base">{s.label}</p>
+              <p className="font-display text-4xl font-extrabold text-white sm:text-5xl">{s.value}</p>
+              <p className="mt-1 text-sm font-medium text-brand-50 sm:text-base">{s.label}</p>
             </div>
           ))}
         </Container>
@@ -139,7 +138,7 @@ export default function HomePage() {
                   i === 0 ? "bg-jade-700 text-white ring-jade-700 md:row-span-2" : "bg-white ring-ink-100"
                 }`}
               >
-                <p className={`text-sm font-semibold ${i === 0 ? "text-sun-300" : "text-vermilion-600"}`}>{p.audience}</p>
+                <p className={`text-sm font-semibold ${i === 0 ? "text-sun-300" : "text-brand-600"}`}>{p.audience}</p>
                 <h3 className={`mt-2 text-2xl font-bold ${i === 0 ? "text-white" : ""}`}>{p.name}</h3>
                 <p className={`mt-1 font-medium ${i === 0 ? "text-jade-100" : "text-ink-500"}`}>{p.tagline}</p>
                 <p className={`mt-4 leading-relaxed ${i === 0 ? "text-jade-50/90" : "text-ink-700"}`}>{p.description}</p>
@@ -159,13 +158,12 @@ export default function HomePage() {
       </section>
 
       {/* Careers band */}
-      <section className="relative overflow-hidden bg-vermilion-600 text-white">
-        <div className="pattern-lattice-light absolute inset-0" />
+      <section className="relative overflow-hidden bg-jade-800 text-white">
         <Container className="relative grid items-center gap-10 py-16 lg:grid-cols-[1.3fr_1fr]">
           <div>
             <p className="text-sm font-bold uppercase tracking-[0.14em] text-sun-300">We&apos;re hiring</p>
             <h2 className="mt-3 text-4xl font-bold sm:text-5xl">Our Team Leaders are the heart of every program.</h2>
-            <p className="mt-5 max-w-xl text-lg leading-relaxed text-vermilion-50">
+            <p className="mt-5 max-w-xl text-lg leading-relaxed text-jade-50/90">
               Work with TK–12 students at a school in your own community, with flexible shift scheduling and a real
               path into education. Create a free applicant account, apply in minutes, and track your status online.
             </p>
@@ -173,7 +171,7 @@ export default function HomePage() {
               <ButtonLink href="/careers" variant="light" size="lg">
                 See open roles <ArrowRight className="size-4" />
               </ButtonLink>
-              <ButtonLink href="/signup" size="lg" className="bg-vermilion-700 hover:bg-ink-900">
+              <ButtonLink href="/signup" size="lg">
                 Create an account
               </ButtonLink>
             </div>
@@ -182,7 +180,7 @@ export default function HomePage() {
             {["Create your applicant account", "Pick a role and the districts near you", "Upload your résumé and submit", "Track your application in your portal"].map(
               (step, i) => (
                 <li key={step} className="flex items-center gap-4 rounded-2xl bg-white/10 px-5 py-4 backdrop-blur">
-                  <span className="grid size-9 shrink-0 place-items-center rounded-full bg-white font-display font-bold text-vermilion-700">
+                  <span className="grid size-9 shrink-0 place-items-center rounded-full bg-brand-600 font-display font-bold text-white">
                     {i + 1}
                   </span>
                   <span className="font-semibold">{step}</span>
@@ -231,7 +229,7 @@ export default function HomePage() {
                 href={`/families#${d.id}`}
                 className="rounded-2xl bg-white p-5 text-center ring-1 ring-ink-100 transition hover:ring-jade-200"
               >
-                <p className="font-display text-2xl font-extrabold text-jade-700">{d.short}</p>
+                <p className="font-display text-2xl font-extrabold text-brand-600">{d.short}</p>
                 <p className="mt-1 font-semibold text-ink-900">{d.name}</p>
               </Link>
             ))}
@@ -243,7 +241,6 @@ export default function HomePage() {
       <section className="py-20">
         <Container>
           <div className="relative overflow-hidden rounded-[2rem] bg-ink-900 px-6 py-14 text-center text-white sm:px-12">
-            <div className="pattern-lattice-light absolute inset-0" />
             <div className="relative mx-auto max-w-2xl">
               <h2 className="text-3xl font-bold sm:text-4xl">Every child deserves a place to belong after school.</h2>
               <p className="mt-4 text-lg text-ink-300">

@@ -18,7 +18,7 @@ type Defaults = {
 function FieldError({ id, message }: { id: string; message?: string }) {
   if (!message) return null;
   return (
-    <p id={id} className="mt-1.5 text-sm font-medium text-vermilion-700">
+    <p id={id} className="mt-1.5 text-sm font-medium text-brand-700">
       {message}
     </p>
   );
@@ -83,7 +83,7 @@ export function ApplyForm({
   return (
     <form onSubmit={onSubmit} className="space-y-8" noValidate>
       {state.error && (
-        <p role="alert" className="rounded-xl bg-vermilion-50 px-4 py-3 font-medium text-vermilion-700">
+        <p role="alert" className="rounded-xl bg-brand-50 px-4 py-3 font-medium text-brand-700">
           {state.error}
         </p>
       )}
@@ -181,7 +181,7 @@ export function ApplyForm({
             htmlFor="resume"
             className={cx(
               "flex cursor-pointer flex-col items-center justify-center gap-2 rounded-2xl border-2 border-dashed bg-white px-6 py-8 text-center transition hover:border-jade-500",
-              fe.resume ? "border-vermilion-500" : "border-ink-100",
+              fe.resume ? "border-brand-500" : "border-ink-100",
             )}
           >
             <Upload className="size-7 text-jade-600" />

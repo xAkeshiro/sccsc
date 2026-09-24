@@ -19,7 +19,7 @@ export function SignOutButton({ className }: { className?: string }) {
         router.replace("/");
         router.refresh();
       }}
-      className={cx("inline-flex items-center gap-1.5 text-sm font-semibold text-ink-700 hover:text-vermilion-700", className)}
+      className={cx("inline-flex items-center gap-1.5 text-sm font-semibold text-ink-700 hover:text-brand-700", className)}
     >
       <LogOut className="size-4" /> {pending ? "Signing out…" : "Sign out"}
     </button>

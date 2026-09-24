@@ -16,7 +16,7 @@ export default function AboutPage() {
         <Container className="grid items-center gap-12 lg:grid-cols-2">
           <div>
             <SectionHeading eyebrow="Our mission" title="Self-sufficiency, empowerment and cultural pride" />
-            <blockquote className="mt-6 border-l-4 border-vermilion-500 pl-5 text-xl leading-relaxed text-ink-700">
+            <blockquote className="mt-6 border-l-4 border-brand-500 pl-5 text-xl leading-relaxed text-ink-700">
               {org.mission}
             </blockquote>
           </div>

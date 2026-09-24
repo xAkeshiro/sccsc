@@ -37,14 +37,14 @@ export function JobForm({
         aria-invalid={fe[name] ? true : undefined}
       />
       {opts.hint && <p className="mt-1.5 text-xs text-ink-500">{opts.hint}</p>}
-      {fe[name] && <p className="mt-1.5 text-sm font-medium text-vermilion-700">{fe[name]}</p>}
+      {fe[name] && <p className="mt-1.5 text-sm font-medium text-brand-700">{fe[name]}</p>}
     </div>
   );
 
   return (
     <form onSubmit={onSubmit} className="space-y-6 rounded-2xl bg-white p-6 ring-1 ring-ink-100 sm:p-8">
       {state.error && (
-        <p role="alert" className="rounded-xl bg-vermilion-50 px-4 py-3 font-medium text-vermilion-700">
+        <p role="alert" className="rounded-xl bg-brand-50 px-4 py-3 font-medium text-brand-700">
           {state.error}
         </p>
       )}
@@ -96,7 +96,7 @@ export function JobForm({
         </label>
         <textarea id="summary" name="summary" rows={2} defaultValue={job?.summary ?? ""} required className="field" aria-invalid={fe.summary ? true : undefined} />
         <p className="mt-1.5 text-xs text-ink-500">One or two sentences shown on the job board.</p>
-        {fe.summary && <p className="mt-1.5 text-sm font-medium text-vermilion-700">{fe.summary}</p>}
+        {fe.summary && <p className="mt-1.5 text-sm font-medium text-brand-700">{fe.summary}</p>}
       </div>
       <div>
         <label htmlFor="description" className="field-label">

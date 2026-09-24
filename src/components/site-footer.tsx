@@ -7,7 +7,6 @@ export function SiteFooter() {
   const { address } = org;
   return (
     <footer className="relative mt-auto overflow-hidden bg-ink-900 text-ink-100">
-      <div className="pattern-lattice-light absolute inset-0 opacity-60" />
       <Container className="relative grid gap-10 py-14 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div>
           <Logo inverted />
