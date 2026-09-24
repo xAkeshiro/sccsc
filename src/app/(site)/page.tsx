@@ -43,13 +43,29 @@ export default function HomePage() {
     <>
       {/* Hero */}
       <section className="relative overflow-hidden">
-        <Container className="relative grid items-center gap-12 py-14 sm:py-20 lg:grid-cols-[1.1fr_1fr] lg:py-24">
+        {/* Soft color washes so the cream background doesn't read flat. */}
+        <div aria-hidden className="absolute -right-40 -top-40 size-[36rem] rounded-full bg-brand-100/60 blur-3xl" />
+        <div aria-hidden className="absolute -bottom-48 -left-40 size-[30rem] rounded-full bg-sun-100 blur-3xl" />
+
+        <Container className="relative grid items-center gap-14 py-14 sm:py-20 lg:grid-cols-[1.05fr_1fr] lg:py-24">
           <div>
             <Eyebrow>Sacramento · Since {org.founded}</Eyebrow>
             <h1 className="mt-4 text-5xl font-extrabold leading-[1.02] text-ink-900 sm:text-6xl lg:text-7xl">
-              Where kids learn, grow and <span className="text-brand-600">belong</span> — after the bell.
+              Where kids learn, grow and{" "}
+              <span className="relative inline-block text-brand-600">
+                belong
+                <svg
+                  aria-hidden
+                  viewBox="0 0 200 20"
+                  preserveAspectRatio="none"
+                  className="absolute -bottom-2 left-0 h-3 w-full text-sun-400 sm:h-4"
+                >
+                  <path d="M3 14 C 50 4, 120 3, 197 9" fill="none" stroke="currentColor" strokeWidth="7" strokeLinecap="round" />
+                </svg>
+              </span>{" "}
+              — after the bell.
             </h1>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink-700 sm:text-xl">
+            <p className="mt-7 max-w-xl text-lg leading-relaxed text-ink-700 sm:text-xl">
               {org.shortName} runs before-school, after-school and summer programs at 95+ schools across four
               districts — and has stood with immigrant and underserved families in Sacramento for over four decades.
             </p>
@@ -63,17 +79,57 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="relative">
-            <div className="grid grid-cols-2 gap-4">
-              <PhotoSlot label={heroPhotos[0].alt} src={heroPhotos[0].src} priority className="aspect-[4/5]" tone="jade" />
-              <div className="grid gap-4">
-                <PhotoSlot label={heroPhotos[1].alt} src={heroPhotos[1].src} priority className="aspect-square" tone="sun" />
-                <PhotoSlot label={heroPhotos[2].alt} src={heroPhotos[2].src} priority className="aspect-square" tone="lake" />
-              </div>
+          {/* Photo collage — every position is a percentage so it scales from phone to desktop. */}
+          <div className="relative mx-auto aspect-[1/1.02] w-full max-w-[34rem]">
+            <div aria-hidden className="absolute inset-y-[6%] right-0 left-[12%] rotate-3 rounded-[3rem] bg-brand-600" />
+            <div aria-hidden className="absolute bottom-[2%] left-0 size-[22%] rounded-full bg-sun-400" />
+            <div aria-hidden className="absolute right-[4%] top-0 size-[9%] rounded-full bg-jade-500" />
+            <div aria-hidden className="absolute bottom-[30%] right-[-2%] size-[6%] rounded-full bg-sun-300" />
+
+            <PhotoSlot
+              label={heroPhotos[0].alt}
+              src={heroPhotos[0].src}
+              priority
+              tone="jade"
+              className="absolute! left-[3%] top-[4%] aspect-[4/5] w-[50%] -rotate-3 shadow-2xl ring-[6px] ring-white sm:ring-8"
+            />
+            <PhotoSlot
+              label={heroPhotos[1].alt}
+              src={heroPhotos[1].src}
+              priority
+              tone="sun"
+              className="absolute! right-[3%] top-[13%] aspect-square w-[44%] rotate-3 shadow-2xl ring-[6px] ring-white sm:ring-8"
+            />
+            <PhotoSlot
+              label={heroPhotos[2].alt}
+              src={heroPhotos[2].src}
+              priority
+              tone="lake"
+              className="absolute! bottom-[4%] right-[8%] aspect-[4/3] w-[52%] -rotate-2 shadow-2xl ring-[6px] ring-white sm:ring-8"
+            />
+
+            {/* Floating "stickers" */}
+            <div className="absolute bottom-[10%] left-[4%] rotate-[-4deg] rounded-2xl bg-white px-4 py-3 shadow-xl sm:px-5 sm:py-4">
+              <p className="font-display text-2xl font-extrabold leading-none text-brand-600 sm:text-3xl">13,000+</p>
+              <p className="mt-1 text-xs font-semibold text-ink-700 sm:text-sm">students every school day</p>
             </div>
-            <div className="absolute -bottom-5 -left-3 hidden rounded-2xl bg-white px-5 py-4 shadow-xl ring-1 ring-ink-100 sm:-left-6 sm:block">
-              <p className="font-display text-3xl font-extrabold text-brand-600">13,000+</p>
-              <p className="text-sm font-medium text-ink-500">students every school day</p>
+            <Link
+              href="/careers"
+              className="absolute right-[-1%] top-[1%] flex rotate-2 items-center gap-2 rounded-full bg-jade-700 px-3.5 py-2 text-xs font-bold text-white shadow-lg transition hover:bg-jade-800 sm:text-sm"
+            >
+              <span className="relative flex size-2.5">
+                <span className="absolute inline-flex size-full animate-ping rounded-full bg-sun-300 opacity-75 motion-reduce:hidden" />
+                <span className="relative inline-flex size-2.5 rounded-full bg-sun-300" />
+              </span>
+              Now hiring Team Leaders
+              <ArrowRight className="size-3.5" />
+            </Link>
+            <div className="absolute left-[44%] top-[50%] grid size-[19%] -translate-x-1/2 rotate-[-8deg] place-items-center rounded-full bg-sun-400 text-center shadow-lg ring-4 ring-white">
+              <span className="font-display text-[0.6rem] font-extrabold uppercase leading-tight text-ink-900 sm:text-xs">
+                Since
+                <br />
+                <span className="text-base sm:text-xl">{org.founded}</span>
+              </span>
             </div>
           </div>
         </Container>
