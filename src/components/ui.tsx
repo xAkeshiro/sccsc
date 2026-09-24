@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { ComponentProps, ReactNode } from "react";
 
@@ -78,28 +79,34 @@ const photoTones = {
 } as const;
 
 /**
- * Stand-in for real program photography. Swap for next/image once the client supplies photos
- * (with signed media releases) — authentic photos of their own students and staff matter more
- * than any other visual on this site.
+ * A photo, or a labeled placeholder until one is supplied. Real photos of the Center's own
+ * students and staff (with signed media releases) matter more than any other visual on the site.
  */
 export function PhotoSlot({
   label,
+  src,
   tone = "jade",
   className,
+  priority,
 }: {
   label: string;
+  src?: string | null;
   tone?: keyof typeof photoTones;
   className?: string;
+  priority?: boolean;
 }) {
+  if (src) {
+    return (
+      <div className={cx("relative overflow-hidden rounded-3xl bg-cream-200", className)}>
+        <Image src={src} alt={label} fill priority={priority} sizes="(min-width: 1024px) 30vw, 50vw" className="object-cover" />
+      </div>
+    );
+  }
   return (
     <div
       role="img"
       aria-label={`Photo placeholder: ${label}`}
-      className={cx(
-        "relative overflow-hidden rounded-3xl bg-gradient-to-br",
-        photoTones[tone],
-        className,
-      )}
+      className={cx("relative overflow-hidden rounded-3xl bg-gradient-to-br", photoTones[tone], className)}
     >
       <span className="absolute bottom-3 left-3 rounded-full bg-white/80 px-3 py-1 text-xs font-medium text-ink-700 backdrop-blur">
         Photo: {label}

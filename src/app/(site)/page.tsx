@@ -1,7 +1,7 @@
 import { ArrowRight, BookOpen, Briefcase, HandHeart, School } from "lucide-react";
 import Link from "next/link";
 import { ButtonLink, Container, Eyebrow, PhotoSlot, SectionHeading } from "@/components/ui";
-import { districts, org, programs, stats } from "@/content/site";
+import { districts, heroPhotos, org, programs, stats } from "@/content/site";
 
 const pathways = [
   {
@@ -65,10 +65,10 @@ export default function HomePage() {
 
           <div className="relative">
             <div className="grid grid-cols-2 gap-4">
-              <PhotoSlot label="students building a STEM project" className="aspect-[4/5]" tone="jade" />
+              <PhotoSlot label={heroPhotos[0].alt} src={heroPhotos[0].src} priority className="aspect-[4/5]" tone="jade" />
               <div className="grid gap-4">
-                <PhotoSlot label="Team Leader reading with kids" className="aspect-square" tone="sun" />
-                <PhotoSlot label="families at pick-up" className="aspect-square" tone="lake" />
+                <PhotoSlot label={heroPhotos[1].alt} src={heroPhotos[1].src} priority className="aspect-square" tone="sun" />
+                <PhotoSlot label={heroPhotos[2].alt} src={heroPhotos[2].src} priority className="aspect-square" tone="lake" />
               </div>
             </div>
             <div className="absolute -bottom-5 -left-3 hidden rounded-2xl bg-white px-5 py-4 shadow-xl ring-1 ring-ink-100 sm:-left-6 sm:block">

@@ -43,6 +43,21 @@ export const org = {
   communities: ["Chinese", "Hmong", "Mien", "Vietnamese", "Ukrainian", "Russian"],
 } as const;
 
+/**
+ * Homepage hero photos. Upload the files to public/photos/ and set each `src` to its path,
+ * e.g. "/photos/hero-1.jpg". Leave `src` as null to show a placeholder. The `alt` text is read
+ * aloud by screen readers, so describe what's in the actual photo.
+ * TODO(client): use photos with signed media releases for every child pictured.
+ */
+export const heroPhotos = [
+  // Tall photo on the left (portrait, about 4:5, e.g. 1200×1500).
+  { src: null as string | null, alt: "Students building a STEM project" },
+  // Top-right square (e.g. 1000×1000).
+  { src: null as string | null, alt: "Team Leader reading with kids" },
+  // Bottom-right square (e.g. 1000×1000).
+  { src: null as string | null, alt: "Families at pick-up" },
+];
+
 export const stats = [
   { value: "13,000+", label: "students served every school day" },
   { value: "95+", label: "school sites across the region" },
