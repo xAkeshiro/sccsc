@@ -30,6 +30,8 @@ function allowedHosts() {
     process.env.VERCEL_PROJECT_PRODUCTION_URL,
     ...(process.env.AUTH_ALLOWED_HOSTS?.split(",") ?? []),
   ];
+  // Vercel only routes a *.vercel.app host to this project if it is one of our own aliases.
+  if (process.env.VERCEL) hosts.push("*.vercel.app");
   if (process.env.NODE_ENV !== "production") hosts.push("localhost:*", "127.0.0.1:*");
   return hosts.map((h) => h?.trim()).filter((h): h is string => Boolean(h));
 }

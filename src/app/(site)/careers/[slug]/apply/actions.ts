@@ -10,7 +10,8 @@ import { requireUser } from "@/lib/session";
 
 export type ApplyState = { error?: string; fieldErrors?: Partial<Record<string, string>> };
 
-const MAX_RESUME_BYTES = 4 * 1024 * 1024; // Vercel functions accept ~4.5 MB request bodies.
+// 3 MB keeps both the upload and the base64 download under Vercel's ~4.5 MB function payload limit.
+const MAX_RESUME_BYTES = 3 * 1024 * 1024;
 
 const RESUME_TYPES: Record<string, { mime: string; magic: number[] }> = {
   pdf: { mime: "application/pdf", magic: [0x25, 0x50, 0x44, 0x46] }, // %PDF
@@ -41,7 +42,7 @@ const schema = z.object({
 
 async function readResume(file: FormDataEntryValue | null) {
   if (!(file instanceof File) || file.size === 0) return { error: "Please attach your résumé." } as const;
-  if (file.size > MAX_RESUME_BYTES) return { error: "Résumé must be 4 MB or smaller." } as const;
+  if (file.size > MAX_RESUME_BYTES) return { error: "Résumé must be 3 MB or smaller." } as const;
   const ext = file.name.split(".").pop()?.toLowerCase() ?? "";
   const kind = RESUME_TYPES[ext];
   if (!kind) return { error: "Résumé must be a PDF or Word document (.pdf, .doc, .docx)." } as const;

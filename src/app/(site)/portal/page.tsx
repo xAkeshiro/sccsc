@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { desc, eq } from "drizzle-orm";
-import { CheckCircle2, FileText } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 import Link from "next/link";
 import { PortalOffline } from "@/components/portal/portal-offline";
+import { ResumeDownload } from "@/components/portal/resume-download";
 import { SignOutButton } from "@/components/portal/sign-out-button";
 import { Badge, Button, ButtonLink, Container } from "@/components/ui";
 import { getDb } from "@/db";
@@ -100,9 +101,12 @@ export default async function PortalPage({ searchParams }: PageProps<"/portal">)
                   <p className="mt-3 text-ink-700">{meta.applicantHint}</p>
                   <div className="mt-4 flex flex-wrap items-center gap-4">
                     {row.resumeId && (
-                      <a href={`/api/resumes/${row.resumeId}`} className="inline-flex items-center gap-1.5 text-sm font-semibold text-jade-700 hover:underline">
-                        <FileText className="size-4" /> My résumé
-                      </a>
+                      <ResumeDownload
+                        resumeId={row.resumeId}
+                        className="inline-flex items-center gap-1.5 text-sm font-semibold text-jade-700 hover:underline"
+                      >
+                        My résumé
+                      </ResumeDownload>
                     )}
                     {withdrawableStatuses.includes(row.status) && (
                       <form action={withdrawApplication.bind(null, row.id)}>

@@ -186,7 +186,7 @@ export function ApplyForm({
           >
             <Upload className="size-7 text-jade-600" />
             <span className="font-semibold text-ink-900">{fileName ?? "Choose a file to upload"}</span>
-            <span className="text-sm text-ink-500">PDF or Word, up to 4 MB</span>
+            <span className="text-sm text-ink-500">PDF or Word, up to 3 MB</span>
           </label>
           <input
             id="resume"

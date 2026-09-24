@@ -10,7 +10,7 @@ const nextConfig: NextConfig = {
   },
   experimental: {
     serverActions: {
-      // Résumé uploads are capped at 4 MB in the action itself; leave headroom for the rest of the form.
+      // Résumé uploads are capped at 3 MB in the action itself; leave headroom for the rest of the form.
       bodySizeLimit: "5mb",
     },
   },

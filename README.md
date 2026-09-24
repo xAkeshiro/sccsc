@@ -50,9 +50,10 @@ src/
   app/(site)/login|signup
   app/admin/             ← HR dashboard: overview, applications pipeline, job postings
   app/api/auth/          ← Better Auth endpoints
-  app/api/resumes/[id]/  ← access-checked résumé downloads
   db/schema.ts           ← tables (auth + jobs, applications, résumés, events)
   lib/session.ts         ← data access layer: getCurrentUser / requireUser / requireAdmin
+  lib/auth-actions.ts    ← sign in / up / out as server actions (see note in file)
+  lib/resume-actions.ts  ← access-checked résumé downloads
 scripts/                 ← migrate, seed, create-admin
 drizzle/                 ← generated SQL migrations (commit these)
 ```
@@ -109,6 +110,6 @@ Until `NEXT_PUBLIC_SITE_LIVE=true`, every page shows a "Redesign preview" banner
 
 - Authorization is checked in the data layer and in every server action (`requireUser` / `requireAdmin`), not just in layouts. Non-admins get a 404 on `/admin`.
 - The `role` field can't be set at sign-up (`input: false`). Admins are created only through the CLI script.
-- Résumé uploads: PDF, DOC or DOCX only, 4 MB or less. The file's signature bytes are checked, not just its extension or MIME type. Downloads are sent as attachments with `nosniff` and `no-store`.
+- Résumé uploads: PDF, DOC or DOCX only, 3 MB or less. The file's signature bytes are checked, not just its extension or MIME type. Downloads go through an owner-or-admin check in a server action.
 - Post-login redirects accept same-site relative paths only.
 - Sign-in is limited to 5 per minute and sign-up to 3 per minute per IP.

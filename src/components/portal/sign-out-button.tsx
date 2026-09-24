@@ -3,7 +3,7 @@
 import { LogOut } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { authClient } from "@/lib/auth-client";
+import { signOut } from "@/lib/auth-actions";
 import { cx } from "@/components/ui";
 
 export function SignOutButton({ className }: { className?: string }) {
@@ -15,7 +15,7 @@ export function SignOutButton({ className }: { className?: string }) {
       disabled={pending}
       onClick={async () => {
         setPending(true);
-        await authClient.signOut();
+        await signOut();
         router.replace("/");
         router.refresh();
       }}

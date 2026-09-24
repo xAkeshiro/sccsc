@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { asc, eq } from "drizzle-orm";
-import { ArrowLeft, Download, Mail, Phone } from "lucide-react";
+import { ArrowLeft, Mail, Phone } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ResumeDownload } from "@/components/portal/resume-download";
 import { Badge, Button } from "@/components/ui";
 import { districts } from "@/content/site";
 import { getDb } from "@/db";
@@ -85,9 +86,13 @@ export default async function AdminApplicationDetail({ params }: PageProps<"/adm
                 <Phone className="size-4" /> {a.phone}
               </a>
               {a.resumeId && (
-                <a href={`/api/resumes/${a.resumeId}`} className="inline-flex items-center gap-2 rounded-full bg-ink-900 px-4 py-2 text-sm font-semibold text-white">
-                  <Download className="size-4" /> {app.resumeName} ({Math.ceil((app.resumeSize ?? 0) / 1024)} KB)
-                </a>
+                <ResumeDownload
+                  resumeId={a.resumeId}
+                  icon="download"
+                  className="inline-flex items-center gap-2 rounded-full bg-ink-900 px-4 py-2 text-sm font-semibold text-white"
+                >
+                  {app.resumeName} ({Math.ceil((app.resumeSize ?? 0) / 1024)} KB)
+                </ResumeDownload>
               )}
             </div>
             <dl className="mt-6 grid gap-x-6 gap-y-4 sm:grid-cols-2">

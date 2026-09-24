@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState, type FormEvent } from "react";
 import { Button } from "@/components/ui";
-import { authClient } from "@/lib/auth-client";
+import { signIn, signUp } from "@/lib/auth-actions";
 
 export function AuthForm({ mode, next }: { mode: "login" | "signup"; next: string }) {
   const router = useRouter();
@@ -19,12 +19,10 @@ export function AuthForm({ mode, next }: { mode: "login" | "signup"; next: strin
     const email = String(form.get("email") ?? "").trim();
     const password = String(form.get("password") ?? "");
 
-    const { error } =
-      mode === "signup"
-        ? await authClient.signUp.email({ name: String(form.get("name") ?? "").trim(), email, password })
-        : await authClient.signIn.email({ email, password });
+    const result = mode === "signup" ? await signUp(form.get("name"), email, password) : await signIn(email, password);
 
-    if (error) {
+    if (!result.ok) {
+      const error = result;
       setPending(false);
       setError(
         error.status === 429
