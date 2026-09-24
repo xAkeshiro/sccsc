@@ -1,8 +1,17 @@
+import Image from "next/image";
 import Link from "next/link";
 import { org } from "@/content/site";
 
-/** Text wordmark placeholder — replace with the client's logo files once provided. */
+/** Official logo when configured in content/site.ts; otherwise a text wordmark placeholder. */
 export function Logo({ inverted = false }: { inverted?: boolean }) {
+  const src = inverted ? (org.logo.invertedSrc ?? org.logo.src) : org.logo.src;
+  if (src) {
+    return (
+      <Link href="/" aria-label={`${org.shortName} — ${org.name}, home`} className={inverted && !org.logo.invertedSrc ? "rounded-xl bg-white p-2" : undefined}>
+        <Image src={src} alt={org.name} width={org.logo.width} height={org.logo.height} priority className="h-11 w-auto" />
+      </Link>
+    );
+  }
   return (
     <Link href="/" className="group flex items-center gap-3" aria-label={`${org.shortName} — ${org.name}, home`}>
       <span

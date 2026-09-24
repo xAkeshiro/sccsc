@@ -1,5 +1,7 @@
 import { redirect } from "next/navigation";
 import { Container } from "@/components/ui";
+import { isDemoMode } from "@/db";
+import { DEMO_ADMIN } from "@/db/seed";
 import { getCurrentUser, portalReady, safeNext } from "@/lib/session";
 import { AuthForm } from "./auth-form";
 import { PortalOffline } from "./portal-offline";
@@ -26,6 +28,16 @@ export async function AuthPage({ mode, nextParam }: { mode: "login" | "signup"; 
         <div className="mt-8 rounded-3xl bg-white p-6 shadow-sm ring-1 ring-ink-100 sm:p-8">
           <AuthForm mode={mode} next={next} />
         </div>
+        {isDemoMode() && mode === "login" && (
+          <div className="mt-6 rounded-2xl bg-sun-100 p-5 text-sm text-ink-900 ring-1 ring-sun-300/60">
+            <p className="font-bold">Demo: try the HR admin view</p>
+            <p className="mt-1">
+              Email <code className="font-semibold">{DEMO_ADMIN.email}</code> · Password{" "}
+              <code className="font-semibold">{DEMO_ADMIN.password}</code>
+            </p>
+            <p className="mt-1 text-ink-700">Or create your own applicant account to apply for a sample job.</p>
+          </div>
+        )}
       </div>
     </Container>
   );

@@ -4,6 +4,7 @@ import { headers } from "next/headers";
 import { notFound, redirect } from "next/navigation";
 import { connection } from "next/server";
 import { cache } from "react";
+import { ensureDbReady } from "@/db";
 import { getAuth, isPortalConfigured } from "@/lib/auth";
 
 export type SessionUser = {
@@ -19,7 +20,9 @@ export type SessionUser = {
  */
 export async function portalReady() {
   await connection();
-  return isPortalConfigured();
+  if (!isPortalConfigured()) return false;
+  await ensureDbReady();
+  return true;
 }
 
 /** Current signed-in user, or null. Memoized per request. */

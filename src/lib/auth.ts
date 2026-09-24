@@ -1,11 +1,22 @@
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { nextCookies } from "better-auth/next-js";
-import { getDb, isDatabaseConfigured, schema } from "@/db";
+import { randomBytes } from "node:crypto";
+import { getDb, isDemoMode, schema } from "@/db";
 
-/** The portal needs a database and, in production, a signing secret (Better Auth refuses to start without one). */
+/**
+ * In production the portal needs a signing secret (Better Auth refuses to start without one),
+ * except in demo mode, which uses a throwaway per-process secret alongside its throwaway database.
+ */
 export function isPortalConfigured() {
-  return isDatabaseConfigured() && (process.env.NODE_ENV !== "production" || Boolean(process.env.BETTER_AUTH_SECRET));
+  return isDemoMode() || process.env.NODE_ENV !== "production" || Boolean(process.env.BETTER_AUTH_SECRET?.trim());
+}
+
+function authSecret() {
+  const configured = process.env.BETTER_AUTH_SECRET?.trim();
+  if (configured) return configured;
+  // Sessions only need to outlive the in-memory demo database, so a random key per process is enough.
+  return isDemoMode() ? randomBytes(32).toString("base64") : undefined;
 }
 
 /**
@@ -26,6 +37,7 @@ function allowedHosts() {
 function createAuth() {
   return betterAuth({
     appName: "The Center — Careers",
+    secret: authSecret(),
     baseURL: process.env.BETTER_AUTH_URL?.trim() || {
       allowedHosts: allowedHosts(),
       protocol: process.env.NODE_ENV === "production" ? "https" : "auto",

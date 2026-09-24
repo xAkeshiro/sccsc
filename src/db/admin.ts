@@ -1,8 +1,8 @@
 import { hashPassword } from "better-auth/crypto";
 import { eq } from "drizzle-orm";
 import { randomUUID } from "node:crypto";
-import type { Database } from "../../src/db";
-import * as schema from "../../src/db/schema";
+import type { Database } from ".";
+import * as schema from "./schema";
 
 /** Returns true when a new account was created. */
 export async function upsertAdmin(

@@ -11,7 +11,7 @@ import { migrate as migratePostgres } from "drizzle-orm/postgres-js/migrator";
 import postgres from "postgres";
 import { LOCAL_DB_DIR, openLocalPglite } from "../src/db";
 import * as schema from "../src/db/schema";
-import { seedIfEmpty } from "./seed";
+import { seedIfEmpty } from "../src/db/seed";
 
 const migrationsFolder = "./drizzle";
 const shouldSeed = process.argv.includes("--seed-if-empty");
@@ -30,7 +30,7 @@ async function main() {
   }
 
   if (process.env.VERCEL || process.env.CI) {
-    console.log("⚠ DATABASE_URL is not set — skipping migrations. The careers portal stays offline until a database is attached.");
+    console.log("ℹ DATABASE_URL is not set — skipping migrations. The careers portal will run in demo mode (in-memory sample data).");
     return;
   }
 

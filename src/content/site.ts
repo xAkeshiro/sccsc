@@ -24,6 +24,12 @@ export const org = {
     volunteers: "volunteers@sccsc.org",
   },
   executiveDirector: "Henry Kloczkowski",
+  /**
+   * Official logo. Drop the file in public/brand/ and set `src` (e.g. "/brand/sccsc-logo.png")
+   * plus its pixel size; until then the header shows a text wordmark.
+   * TODO(client): supply the logo file (SVG preferred, or a PNG at least 400px wide).
+   */
+  logo: { src: null as string | null, width: 400, height: 120, invertedSrc: null as string | null },
   social: {
     facebook: "https://www.facebook.com/SacChinese/",
     linkedin: "https://www.linkedin.com/company/sacramento-chinese-community-service-center",

@@ -11,7 +11,7 @@ import { drizzle as drizzlePostgres } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
 import { openLocalPglite, type Database } from "../src/db";
 import * as schema from "../src/db/schema";
-import { upsertAdmin } from "./lib/admin";
+import { upsertAdmin } from "../src/db/admin";
 
 async function main() {
   const [email, ...nameParts] = process.argv.slice(2);

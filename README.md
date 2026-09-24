@@ -59,18 +59,29 @@ drizzle/                 ← generated SQL migrations (commit these)
 
 ## Deploying to Vercel
 
-1. **Import the repo** in Vercel (framework preset: Next.js; defaults are fine).
-   The first deploy works right away. Marketing pages render, and careers pages show a "job board almost ready, email careers@sccsc.org" notice until steps 2 and 3 are done.
-2. **Add a database:** in the project, go to **Storage → Create → Neon (Postgres)** and connect it to all environments. This sets `DATABASE_URL`.
-3. **Add environment variables:**
-   - `BETTER_AUTH_SECRET`: generate with `openssl rand -base64 32` (**required**; the portal stays offline without it)
+### Demo mode (no setup)
+
+Import the repo in Vercel (framework preset: Next.js; defaults are fine) and deploy. With no `DATABASE_URL`, the careers portal runs in **demo mode**:
+
+- It uses an in-memory Postgres (PGlite) that's seeded on startup with the 5 sample jobs and the demo admin (`admin@example.com` / `center-admin-demo`, shown on the sign-in page).
+- Everything works: sign up, apply, upload a résumé, and review applications as admin.
+- Data resets whenever Vercel recycles the server instance, and each instance has its own copy. So a session can occasionally drop, or a new application might not show up for the admin.
+- A banner warns visitors not to upload real résumés.
+
+You can force demo mode locally with `DEMO_MODE=true npm run dev`.
+
+### Full mode (real database)
+
+1. **Add a database:** in the project, go to **Storage → Create → Neon (Postgres)** and connect it to all environments. This sets `DATABASE_URL`.
+2. **Add environment variables:**
+   - `BETTER_AUTH_SECRET`: generate with `openssl rand -base64 32` (**required** once `DATABASE_URL` is set; the portal stays offline without it)
    - `NEXT_PUBLIC_SITE_URL`: e.g. `https://sccsc.org`
-4. **Redeploy.** The build runs `db:migrate` automatically when `DATABASE_URL` is set.
-5. **Create the real HR admin** (run from your machine against the production DB):
+3. **Redeploy.** Demo mode switches off automatically, and the build runs `db:migrate` automatically when `DATABASE_URL` is set.
+4. **Create the real HR admin** (run from your machine against the production DB):
    ```bash
    DATABASE_URL='<neon url>' ADMIN_PASSWORD='<strong password>' npm run admin:create -- hr@sccsc.org "HR Team"
    ```
-6. **Add job postings** at `/admin/jobs/new`. Production builds only migrate and never seed, so the live database starts empty. For a demo, `DATABASE_URL=... npm run db:seed` inserts the 5 sample postings (only when the jobs table is empty). Close them from `/admin/jobs` when you're done.
+5. **Add job postings** at `/admin/jobs/new`. Production builds only migrate and never seed, so the live database starts empty. For a demo, `DATABASE_URL=... npm run db:seed` inserts the 5 sample postings (only when the jobs table is empty). Close them from `/admin/jobs` when you're done.
 
 Preview deployments trust their own `*.vercel.app` hostnames for auth automatically. For a custom domain, add it to `AUTH_ALLOWED_HOSTS` (or set `BETTER_AUTH_URL`).
 
@@ -81,7 +92,7 @@ Until `NEXT_PUBLIC_SITE_LIVE=true`, every page shows a "Redesign preview" banner
 ## Launch checklist (content marked `TODO(client)` in code)
 
 - [ ] Real photos with media releases. Swap the `PhotoSlot` placeholders for `next/image`.
-- [ ] Logo files to replace the text wordmark in `src/components/logo.tsx`
+- [ ] Official logo: drop it in `public/brand/` and set `org.logo.src` (plus its width and height) in `src/content/site.ts`. Optionally set `invertedSrc` to a white version for the dark footer.
 - [ ] Confirm the summer and early-learning program copy (`src/content/site.ts`)
 - [ ] Per-school program list for the Families page (95+ sites)
 - [ ] Office hours and a general contact form
