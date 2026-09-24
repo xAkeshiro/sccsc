@@ -49,6 +49,8 @@ src/
   app/(site)/portal/     ← applicant dashboard (status, résumé, withdraw)
   app/(site)/login|signup
   app/admin/             ← HR dashboard: overview, applications pipeline, job postings
+  app/jobs.xml/          ← Indeed job feed (open jobs, live)
+  lib/job-syndication.ts ← shared Indeed / Google for Jobs job data
   app/api/auth/          ← Better Auth endpoints
   db/schema.ts           ← tables (auth + jobs, applications, résumés, events)
   lib/session.ts         ← data access layer: getCurrentUser / requireUser / requireAdmin
@@ -90,6 +92,16 @@ Preview deployments trust their own `*.vercel.app` hostnames for auth automatica
 
 Until `NEXT_PUBLIC_SITE_LIVE=true`, every page shows a "Redesign preview" banner and sends `noindex` (plus a blocking `robots.txt`), so previews never compete with the real site in search. Set it only when this deployment becomes sccsc.org.
 
+## Job boards: Indeed and Google for Jobs
+
+The site is the **source of truth** for job postings. Other job boards copy from it:
+
+- **Indeed:** `/jobs.xml` is an Indeed-format XML feed of every open job, generated live from the jobs table. Register `https://sccsc.org/jobs.xml` with Indeed once, through the Center's Indeed employer account or rep. Indeed re-reads it every few hours, so publishing, editing or closing a job in `/admin/jobs` reaches Indeed on its own. Applicants who click "Apply" on Indeed land on our job page and apply here, so every application stays in our pipeline.
+- **Google for Jobs:** each open job page includes `JobPosting` structured data, including pay when the pay field can be read as a range, e.g. `$19.00–$21.00/hour`. Closed jobs drop it.
+- **Edit jobs on the site, not on Indeed.** Changes made in Indeed's dashboard are overwritten on the next feed read, and a job closed only on Indeed may come back while it's still open here. Use Indeed's dashboard for sponsoring and stats.
+- **Volunteer roles are left out of the Indeed feed**, since Indeed doesn't take unpaid postings; they still appear on our board and on Google. Confirm with the Center's Indeed rep.
+- **Before launch:** only register the feed once the site is live on the real domain, because job URLs in the feed use `NEXT_PUBLIC_SITE_URL`. Glassdoor (owned by Indeed) usually picks up the same listings.
+
 ## Launch checklist (content marked `TODO(client)` in code)
 
 - [ ] Real photos with media releases. Homepage hero: put files in `public/photos/` and set their paths in `heroPhotos` in `src/content/site.ts`. Other placeholders take a `src` prop on `PhotoSlot` the same way.
@@ -102,6 +114,7 @@ Until `NEXT_PUBLIC_SITE_LIVE=true`, every page shows a "Redesign preview" banner
 - [ ] Real job postings with pay ranges. California requires pay scales in job postings for employers with 15+ employees.
 - [ ] Email notifications for new applications and status changes (hook in `careers/[slug]/apply/actions.ts`; e.g. Resend)
 - [ ] Password reset email (Better Auth `sendResetPassword`, needs an email provider)
+- [ ] Register `https://sccsc.org/jobs.xml` with Indeed after go-live
 - [ ] 301 redirects from old WordPress URLs (`/join-our-team/`, `/staff-directory/...`, etc.) in `next.config.ts`
 - [ ] Translations for priority family languages
 - [ ] Privacy policy covering applicant data and a résumé retention period

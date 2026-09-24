@@ -83,12 +83,19 @@ export function JobForm({
             <option value="open">Open (accepting applications)</option>
             <option value="closed">Closed</option>
           </select>
+          <p className="mt-1.5 text-xs text-ink-500">
+            Open jobs also appear on Indeed and Google Jobs; edits and closures reach them within a few hours. Always make
+            changes here. Edits made on Indeed are overwritten.
+          </p>
         </div>
       </div>
       <div className="grid gap-5 sm:grid-cols-2">
         {text("location", "Location", { required: true, placeholder: "e.g. School sites across Natomas Unified" })}
         {text("schedule", "Schedule", { placeholder: "e.g. Weekday afternoons during the school year" })}
-        {text("payRange", "Pay", { placeholder: "e.g. $19.00–$21.00/hour" })}
+        {text("payRange", "Pay", {
+          placeholder: "e.g. $19.00–$21.00/hour",
+          hint: "Required in California job postings; Indeed and Google also rank jobs with pay higher.",
+        })}
       </div>
       <div>
         <label htmlFor="summary" className="field-label">

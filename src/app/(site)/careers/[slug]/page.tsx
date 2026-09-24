@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { PortalOffline } from "@/components/portal/portal-offline";
 import { Badge, ButtonLink, Container } from "@/components/ui";
 import { employmentTypes, jobCategories, org } from "@/content/site";
+import { jobPostingJsonLd } from "@/lib/job-syndication";
 import { getPublicJob } from "@/lib/jobs";
 import { isPortalConfigured } from "@/lib/auth";
 import { portalReady } from "@/lib/session";
@@ -29,6 +30,13 @@ export default async function JobPage({ params }: PageProps<"/careers/[slug]">) 
 
   return (
     <Container className="py-12 sm:py-16">
+      {open && (
+        // Google for Jobs reads this structured data; "<" is escaped so job text can't close the script tag.
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jobPostingJsonLd(job)).replace(/</g, "\\u003c") }}
+        />
+      )}
       <Link href="/careers" className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-700 hover:underline">
         <ArrowLeft className="size-4" /> All openings
       </Link>
