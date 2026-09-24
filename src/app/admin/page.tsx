@@ -41,7 +41,7 @@ export default async function AdminOverview() {
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {tiles.map((t) => (
-          <Link key={t.label} href={t.href} className="rounded-2xl bg-white p-5 ring-1 ring-ink-100 hover:ring-jade-200">
+          <Link key={t.label} href={t.href} className="rounded-2xl bg-white p-5 ring-1 ring-ink-100 hover:ring-brand-200">
             <p className="text-sm font-medium text-ink-500">{t.label}</p>
             <p className="mt-1 font-display text-4xl font-extrabold text-ink-900">{t.value}</p>
           </Link>
@@ -51,7 +51,7 @@ export default async function AdminOverview() {
       <section>
         <div className="flex items-center justify-between">
           <h2 className="text-xl font-bold">Latest applications</h2>
-          <Link href="/admin/applications" className="text-sm font-semibold text-jade-700 hover:underline">
+          <Link href="/admin/applications" className="text-sm font-semibold text-brand-700 hover:underline">
             View all
           </Link>
         </div>
@@ -83,7 +83,7 @@ export default async function AdminOverview() {
         <h2 className="text-xl font-bold">Pipeline</h2>
         <div className="mt-4 flex flex-wrap gap-2">
           {APPLICATION_STATUSES.map((s) => (
-            <Link key={s} href={`/admin/applications?status=${s}`} className="rounded-full bg-white px-4 py-2 text-sm ring-1 ring-ink-100 hover:ring-jade-200">
+            <Link key={s} href={`/admin/applications?status=${s}`} className="rounded-full bg-white px-4 py-2 text-sm ring-1 ring-ink-100 hover:ring-brand-200">
               {applicationStatusMeta[s].label} <strong className="ml-1">{counts[s] ?? 0}</strong>
             </Link>
           ))}

@@ -33,7 +33,7 @@ export default async function AdminLayout({ children }: LayoutProps<"/admin">) {
           </div>
           <div className="flex items-center gap-5 text-sm">
             <span className="hidden text-ink-500 sm:inline">{admin.email}</span>
-            <Link href="/" className="font-semibold text-ink-700 hover:text-jade-700">
+            <Link href="/" className="font-semibold text-ink-700 hover:text-brand-700">
               View site
             </Link>
             <SignOutButton />
@@ -45,7 +45,7 @@ export default async function AdminLayout({ children }: LayoutProps<"/admin">) {
               <Link
                 key={item.href}
                 href={item.href}
-                className="whitespace-nowrap border-b-2 border-transparent px-3 py-3 text-sm font-semibold text-ink-700 hover:border-jade-200 hover:text-ink-900"
+                className="whitespace-nowrap border-b-2 border-transparent px-3 py-3 text-sm font-semibold text-ink-700 hover:border-brand-200 hover:text-ink-900"
               >
                 {item.label}
               </Link>

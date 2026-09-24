@@ -57,7 +57,7 @@ export default async function AdminApplicationDetail({ params }: PageProps<"/adm
 
   return (
     <div className="space-y-6">
-      <Link href="/admin/applications" className="inline-flex items-center gap-1.5 text-sm font-semibold text-jade-700 hover:underline">
+      <Link href="/admin/applications" className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-700 hover:underline">
         <ArrowLeft className="size-4" /> All applications
       </Link>
 
@@ -66,7 +66,7 @@ export default async function AdminApplicationDetail({ params }: PageProps<"/adm
           <h1 className="text-3xl font-bold">{a.fullName}</h1>
           <p className="mt-1 text-ink-700">
             Applied for{" "}
-            <Link href={`/careers/${app.jobSlug}`} className="font-semibold text-jade-700 hover:underline">
+            <Link href={`/careers/${app.jobSlug}`} className="font-semibold text-brand-700 hover:underline">
               {app.jobTitle}
             </Link>{" "}
             · {dateTimeFmt.format(a.createdAt)}
@@ -79,10 +79,10 @@ export default async function AdminApplicationDetail({ params }: PageProps<"/adm
         <div className="space-y-6">
           <section className="rounded-2xl bg-white p-6 ring-1 ring-ink-100">
             <div className="flex flex-wrap gap-3">
-              <a href={`mailto:${a.email}`} className="inline-flex items-center gap-2 rounded-full bg-jade-50 px-4 py-2 text-sm font-semibold text-jade-800">
+              <a href={`mailto:${a.email}`} className="inline-flex items-center gap-2 rounded-full bg-brand-50 px-4 py-2 text-sm font-semibold text-brand-800">
                 <Mail className="size-4" /> {a.email}
               </a>
-              <a href={`tel:${a.phone}`} className="inline-flex items-center gap-2 rounded-full bg-jade-50 px-4 py-2 text-sm font-semibold text-jade-800">
+              <a href={`tel:${a.phone}`} className="inline-flex items-center gap-2 rounded-full bg-brand-50 px-4 py-2 text-sm font-semibold text-brand-800">
                 <Phone className="size-4" /> {a.phone}
               </a>
               {a.resumeId && (

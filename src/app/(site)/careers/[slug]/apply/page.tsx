@@ -33,7 +33,7 @@ export default async function ApplyPage({ params }: PageProps<"/careers/[slug]/a
 
   return (
     <Container className="py-12 sm:py-16">
-      <Link href={`/careers/${slug}`} className="inline-flex items-center gap-1.5 text-sm font-semibold text-jade-700 hover:underline">
+      <Link href={`/careers/${slug}`} className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-700 hover:underline">
         <ArrowLeft className="size-4" /> Back to job details
       </Link>
       <div className="mx-auto mt-6 max-w-3xl">

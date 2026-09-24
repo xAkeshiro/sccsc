@@ -89,7 +89,7 @@ export function AuthForm({ mode, next }: { mode: "login" | "signup"; next: strin
 
       <p className="text-center text-sm text-ink-700">
         {mode === "login" ? "New here? " : "Already have an account? "}
-        <Link href={altHref} className="font-semibold text-jade-700 underline">
+        <Link href={altHref} className="font-semibold text-brand-700 underline">
           {mode === "login" ? "Create an applicant account" : "Sign in"}
         </Link>
       </p>

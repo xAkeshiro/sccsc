@@ -35,13 +35,14 @@ export default async function CareersPage({ searchParams }: PageProps<"/careers"
   return (
     <>
       <PageHero
+        tone="brand"
         eyebrow="Careers"
         title="Do work that matters — right after the bell"
         intro="Join the team that keeps 13,000+ students safe, engaged and inspired every school day. Create an account once, apply in minutes, and track your application online."
       >
         <ul className="mt-8 grid gap-2 sm:grid-cols-2">
           {perks.map((p) => (
-            <li key={p} className="flex items-center gap-2 text-jade-50">
+            <li key={p} className="flex items-center gap-2 text-brand-50">
               <span className="size-1.5 rounded-full bg-sun-300" /> {p}
             </li>
           ))}
@@ -87,7 +88,7 @@ export default async function CareersPage({ searchParams }: PageProps<"/careers"
             <strong className="text-ink-900">{jobList.length}</strong> open {jobList.length === 1 ? "position" : "positions"}
           </p>
           {filtered && (
-            <Link href="/careers" className="text-sm font-semibold text-jade-700 underline">
+            <Link href="/careers" className="text-sm font-semibold text-brand-700 underline">
               Clear filters
             </Link>
           )}
@@ -98,14 +99,14 @@ export default async function CareersPage({ searchParams }: PageProps<"/careers"
             <li key={job.id}>
               <Link
                 href={`/careers/${job.slug}`}
-                className="group flex flex-col gap-4 rounded-3xl bg-white p-6 ring-1 ring-ink-100 transition hover:shadow-md hover:ring-jade-200 sm:flex-row sm:items-center sm:justify-between"
+                className="group flex flex-col gap-4 rounded-3xl bg-white p-6 ring-1 ring-ink-100 transition hover:shadow-md hover:ring-brand-200 sm:flex-row sm:items-center sm:justify-between"
               >
                 <div>
                   <div className="flex flex-wrap gap-2">
-                    <Badge tone="jade">{jobCategories[job.category as keyof typeof jobCategories] ?? job.category}</Badge>
+                    <Badge tone="brand">{jobCategories[job.category as keyof typeof jobCategories] ?? job.category}</Badge>
                     <Badge tone="sun">{employmentTypes[job.employmentType as keyof typeof employmentTypes] ?? job.employmentType}</Badge>
                   </div>
-                  <h2 className="mt-3 text-xl font-bold group-hover:text-jade-700">{job.title}</h2>
+                  <h2 className="mt-3 text-xl font-bold group-hover:text-brand-700">{job.title}</h2>
                   <p className="mt-1 max-w-2xl text-ink-700">{job.summary}</p>
                   <div className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-sm text-ink-500">
                     <span className="inline-flex items-center gap-1.5">
@@ -118,7 +119,7 @@ export default async function CareersPage({ searchParams }: PageProps<"/careers"
                     )}
                   </div>
                 </div>
-                <span className="inline-flex shrink-0 items-center gap-1.5 font-semibold text-jade-700">
+                <span className="inline-flex shrink-0 items-center gap-1.5 font-semibold text-brand-700">
                   View & apply <ArrowRight className="size-4 transition group-hover:translate-x-0.5" />
                 </span>
               </Link>

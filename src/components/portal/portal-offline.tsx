@@ -9,7 +9,7 @@ export function PortalOffline() {
         <h1 className="text-2xl font-bold">Our online job board is almost ready</h1>
         <p className="mt-3 text-ink-700">
           In the meantime, email your résumé and the role you&apos;re interested in to{" "}
-          <a className="font-semibold text-jade-700 underline" href={`mailto:${org.emails.careers}`}>
+          <a className="font-semibold text-brand-700 underline" href={`mailto:${org.emails.careers}`}>
             {org.emails.careers}
           </a>
           .

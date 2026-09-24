@@ -29,14 +29,14 @@ export default async function JobPage({ params }: PageProps<"/careers/[slug]">) 
 
   return (
     <Container className="py-12 sm:py-16">
-      <Link href="/careers" className="inline-flex items-center gap-1.5 text-sm font-semibold text-jade-700 hover:underline">
+      <Link href="/careers" className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-700 hover:underline">
         <ArrowLeft className="size-4" /> All openings
       </Link>
 
       <div className="mt-6 grid gap-10 lg:grid-cols-[1fr_20rem]">
         <article>
           <div className="flex flex-wrap gap-2">
-            <Badge tone="jade">{jobCategories[job.category as keyof typeof jobCategories] ?? job.category}</Badge>
+            <Badge tone="brand">{jobCategories[job.category as keyof typeof jobCategories] ?? job.category}</Badge>
             <Badge tone="sun">{employmentTypes[job.employmentType as keyof typeof employmentTypes] ?? job.employmentType}</Badge>
             {!open && <Badge tone="ink">No longer accepting applications</Badge>}
           </div>
@@ -50,7 +50,7 @@ export default async function JobPage({ params }: PageProps<"/careers/[slug]">) 
               <ul className="mt-4 space-y-3">
                 {job.responsibilities.map((r) => (
                   <li key={r} className="flex gap-3 text-ink-900">
-                    <Check className="mt-0.5 size-5 shrink-0 text-jade-600" /> {r}
+                    <Check className="mt-0.5 size-5 shrink-0 text-brand-600" /> {r}
                   </li>
                 ))}
               </ul>
@@ -62,7 +62,7 @@ export default async function JobPage({ params }: PageProps<"/careers/[slug]">) 
               <ul className="mt-4 space-y-3">
                 {job.qualifications.map((q) => (
                   <li key={q} className="flex gap-3 text-ink-900">
-                    <Check className="mt-0.5 size-5 shrink-0 text-jade-600" /> {q}
+                    <Check className="mt-0.5 size-5 shrink-0 text-brand-600" /> {q}
                   </li>
                 ))}
               </ul>
@@ -75,7 +75,7 @@ export default async function JobPage({ params }: PageProps<"/careers/[slug]">) 
             <dl className="space-y-4">
               {facts.map(({ icon: Icon, label, value }) => (
                 <div key={label} className="flex gap-3">
-                  <Icon className="mt-0.5 size-5 shrink-0 text-jade-600" />
+                  <Icon className="mt-0.5 size-5 shrink-0 text-brand-600" />
                   <div>
                     <dt className="text-sm font-semibold text-ink-500">{label}</dt>
                     <dd className="text-ink-900">{value}</dd>
@@ -94,7 +94,7 @@ export default async function JobPage({ params }: PageProps<"/careers/[slug]">) 
             )}
             <p className="mt-4 text-center text-sm text-ink-500">
               Questions?{" "}
-              <a href={`mailto:${org.emails.careers}`} className="font-semibold text-jade-700 underline">
+              <a href={`mailto:${org.emails.careers}`} className="font-semibold text-brand-700 underline">
                 {org.emails.careers}
               </a>
             </p>

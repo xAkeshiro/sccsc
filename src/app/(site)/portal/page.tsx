@@ -57,11 +57,11 @@ export default async function PortalPage({ searchParams }: PageProps<"/portal">)
       </div>
 
       {justApplied && (
-        <div role="status" className="mt-8 flex items-start gap-3 rounded-2xl bg-jade-50 p-5 ring-1 ring-jade-100">
-          <CheckCircle2 className="mt-0.5 size-6 shrink-0 text-jade-600" />
+        <div role="status" className="mt-8 flex items-start gap-3 rounded-2xl bg-brand-50 p-5 ring-1 ring-brand-100">
+          <CheckCircle2 className="mt-0.5 size-6 shrink-0 text-brand-600" />
           <div>
-            <p className="font-bold text-jade-800">Application submitted — thank you!</p>
-            <p className="text-jade-800">
+            <p className="font-bold text-brand-800">Application submitted — thank you!</p>
+            <p className="text-brand-800">
               We received your application for <strong>{justApplied.jobTitle}</strong>. Status updates will appear here.
             </p>
           </div>
@@ -89,7 +89,7 @@ export default async function PortalPage({ searchParams }: PageProps<"/portal">)
                 <li key={row.id} className="rounded-3xl bg-white p-6 ring-1 ring-ink-100">
                   <div className="flex flex-wrap items-start justify-between gap-4">
                     <div>
-                      <Link href={`/careers/${row.jobSlug}`} className="text-lg font-bold hover:text-jade-700">
+                      <Link href={`/careers/${row.jobSlug}`} className="text-lg font-bold hover:text-brand-700">
                         {row.jobTitle}
                       </Link>
                       <p className="mt-0.5 text-sm text-ink-500">
@@ -103,7 +103,7 @@ export default async function PortalPage({ searchParams }: PageProps<"/portal">)
                     {row.resumeId && (
                       <ResumeDownload
                         resumeId={row.resumeId}
-                        className="inline-flex items-center gap-1.5 text-sm font-semibold text-jade-700 hover:underline"
+                        className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-700 hover:underline"
                       >
                         My résumé
                       </ResumeDownload>

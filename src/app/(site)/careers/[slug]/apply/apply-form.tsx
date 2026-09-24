@@ -47,9 +47,9 @@ function CheckboxGroup({
         {options.map((o) => (
           <label
             key={o.value}
-            className="flex cursor-pointer items-center gap-3 rounded-xl border border-ink-100 bg-white px-3.5 py-2.5 has-[:checked]:border-jade-600 has-[:checked]:bg-jade-50"
+            className="flex cursor-pointer items-center gap-3 rounded-xl border border-ink-100 bg-white px-3.5 py-2.5 has-[:checked]:border-brand-600 has-[:checked]:bg-brand-50"
           >
-            <input type="checkbox" name={name} value={o.value} defaultChecked={defaults.includes(o.value)} className="size-4 accent-jade-700" />
+            <input type="checkbox" name={name} value={o.value} defaultChecked={defaults.includes(o.value)} className="size-4 accent-brand-700" />
             <span className="text-sm font-medium">{o.label}</span>
           </label>
         ))}
@@ -180,11 +180,11 @@ export function ApplyForm({
           <label
             htmlFor="resume"
             className={cx(
-              "flex cursor-pointer flex-col items-center justify-center gap-2 rounded-2xl border-2 border-dashed bg-white px-6 py-8 text-center transition hover:border-jade-500",
+              "flex cursor-pointer flex-col items-center justify-center gap-2 rounded-2xl border-2 border-dashed bg-white px-6 py-8 text-center transition hover:border-brand-500",
               fe.resume ? "border-brand-500" : "border-ink-100",
             )}
           >
-            <Upload className="size-7 text-jade-600" />
+            <Upload className="size-7 text-brand-600" />
             <span className="font-semibold text-ink-900">{fileName ?? "Choose a file to upload"}</span>
             <span className="text-sm text-ink-500">PDF or Word, up to 3 MB</span>
           </label>
@@ -214,7 +214,7 @@ export function ApplyForm({
 
       <div className="space-y-5 border-t border-ink-100 pt-6">
         <label className="flex items-start gap-3">
-          <input type="checkbox" name="acknowledge" required className="mt-1 size-4 accent-jade-700" {...invalid("acknowledge")} />
+          <input type="checkbox" name="acknowledge" required className="mt-1 size-4 accent-brand-700" {...invalid("acknowledge")} />
           <span className="text-sm text-ink-700">
             I confirm the information in this application is true and complete to the best of my knowledge.
           </span>

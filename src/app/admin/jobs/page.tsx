@@ -34,10 +34,10 @@ export default async function AdminJobs() {
                 <Badge tone={jobStatusMeta[job.status].tone}>{jobStatusMeta[job.status].label}</Badge>
                 <span className="text-sm text-ink-500">{employmentTypes[job.employmentType as keyof typeof employmentTypes]}</span>
               </div>
-              <Link href={`/admin/jobs/${job.id}`} className="mt-1 block text-lg font-bold hover:text-jade-700">
+              <Link href={`/admin/jobs/${job.id}`} className="mt-1 block text-lg font-bold hover:text-brand-700">
                 {job.title}
               </Link>
-              <Link href={`/admin/applications?job=${job.id}`} className="text-sm font-semibold text-jade-700 hover:underline">
+              <Link href={`/admin/applications?job=${job.id}`} className="text-sm font-semibold text-brand-700 hover:underline">
                 {job.applicants} {job.applicants === 1 ? "applicant" : "applicants"}
               </Link>
             </div>

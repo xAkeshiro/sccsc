@@ -56,7 +56,7 @@
     @apply font-display tracking-tight text-balance;
   }
   :focus-visible {
-    @apply outline-2 outline-offset-2 outline-jade-600;
+    @apply outline-2 outline-offset-2 outline-brand-600;
   }
   ::selection {
     @apply bg-sun-300 text-ink-900;
@@ -65,7 +65,7 @@
 
 /* Form controls shared by the portal and admin. */
 @utility field {
-  @apply block w-full rounded-xl border border-ink-100 bg-white px-3.5 py-2.5 text-base text-ink-900 shadow-sm placeholder:text-ink-300 focus:border-jade-600 focus:outline-none focus:ring-2 focus:ring-jade-200;
+  @apply block w-full rounded-xl border border-ink-100 bg-white px-3.5 py-2.5 text-base text-ink-900 shadow-sm placeholder:text-ink-300 focus:border-brand-600 focus:outline-none focus:ring-2 focus:ring-brand-100;
 }
 @utility field-label {
   @apply mb-1.5 block text-sm font-semibold text-ink-900;

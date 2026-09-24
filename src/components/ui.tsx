@@ -115,12 +115,11 @@ export function PhotoSlot({
   );
 }
 
-export function Badge({ children, tone = "jade" }: { children: ReactNode; tone?: "jade" | "sun" | "ink" | "vermilion" | "lake" }) {
+export function Badge({ children, tone = "brand" }: { children: ReactNode; tone?: "brand" | "sun" | "ink" | "lake" }) {
   const tones = {
-    jade: "bg-jade-50 text-jade-800 ring-jade-100",
+    brand: "bg-brand-50 text-brand-700 ring-brand-100",
     sun: "bg-sun-100 text-ink-900 ring-sun-300/60",
     ink: "bg-ink-100/60 text-ink-700 ring-ink-100",
-    vermilion: "bg-brand-50 text-brand-700 ring-brand-100",
     lake: "bg-lake-100 text-lake-700 ring-lake-300/60",
   };
   return (
@@ -130,23 +129,32 @@ export function Badge({ children, tone = "jade" }: { children: ReactNode; tone?:
   );
 }
 
+const heroTones = {
+  jade: { section: "border-brand-600 bg-jade-800", eyebrow: "text-sun-300", intro: "text-jade-50/90" },
+  // Careers area: logo red with a deep-crimson rule, no green.
+  brand: { section: "border-brand-800 bg-brand-600", eyebrow: "text-sun-300", intro: "text-brand-50" },
+} as const;
+
 export function PageHero({
   eyebrow,
   title,
   intro,
+  tone = "jade",
   children,
 }: {
   eyebrow?: string;
   title: ReactNode;
   intro?: ReactNode;
+  tone?: keyof typeof heroTones;
   children?: ReactNode;
 }) {
+  const t = heroTones[tone];
   return (
-    <section className="relative overflow-hidden border-b-8 border-brand-600 bg-jade-800 text-white">
+    <section className={cx("relative overflow-hidden border-b-8 text-white", t.section)}>
       <Container className="relative py-16 sm:py-20">
-        {eyebrow && <p className="text-sm font-bold uppercase tracking-[0.14em] text-sun-300">{eyebrow}</p>}
+        {eyebrow && <p className={cx("text-sm font-bold uppercase tracking-[0.14em]", t.eyebrow)}>{eyebrow}</p>}
         <h1 className="mt-3 max-w-3xl text-4xl font-bold sm:text-5xl">{title}</h1>
-        {intro && <p className="mt-5 max-w-2xl text-lg leading-relaxed text-jade-50/90">{intro}</p>}
+        {intro && <p className={cx("mt-5 max-w-2xl text-lg leading-relaxed", t.intro)}>{intro}</p>}
         {children}
       </Container>
     </section>

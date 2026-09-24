@@ -76,7 +76,7 @@ export default async function AdminApplications({ searchParams }: PageProps<"/ad
           Filter
         </button>
         {(status || jobId) && (
-          <Link href="/admin/applications" className="px-2 py-2.5 text-sm font-semibold text-jade-700 underline">
+          <Link href="/admin/applications" className="px-2 py-2.5 text-sm font-semibold text-brand-700 underline">
             Clear
           </Link>
         )}
@@ -98,7 +98,7 @@ export default async function AdminApplications({ searchParams }: PageProps<"/ad
             {rows.map((r) => (
               <tr key={r.id} className="hover:bg-cream-50">
                 <td className="px-4 py-3">
-                  <Link href={`/admin/applications/${r.id}`} className="font-semibold text-ink-900 hover:text-jade-700">
+                  <Link href={`/admin/applications/${r.id}`} className="font-semibold text-ink-900 hover:text-brand-700">
                     {r.fullName}
                   </Link>
                   <div className="text-ink-500">{r.email}</div>

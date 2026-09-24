@@ -115,7 +115,7 @@ export default function HomePage() {
             </div>
             <Link
               href="/careers"
-              className="absolute right-[-1%] top-[1%] flex rotate-2 items-center gap-2 rounded-full bg-jade-700 px-3.5 py-2 text-xs font-bold text-white shadow-lg transition hover:bg-jade-800 sm:text-sm"
+              className="absolute right-[-1%] top-[1%] flex rotate-2 items-center gap-2 rounded-full bg-ink-900 px-3.5 py-2 text-xs font-bold text-white shadow-lg transition hover:bg-black sm:text-sm"
             >
               <span className="relative flex size-2.5">
                 <span className="absolute inline-flex size-full animate-ping rounded-full bg-sun-300 opacity-75 motion-reduce:hidden" />
@@ -214,12 +214,12 @@ export default function HomePage() {
       </section>
 
       {/* Careers band */}
-      <section className="relative overflow-hidden bg-jade-800 text-white">
+      <section className="relative overflow-hidden bg-brand-600 text-white">
         <Container className="relative grid items-center gap-10 py-16 lg:grid-cols-[1.3fr_1fr]">
           <div>
             <p className="text-sm font-bold uppercase tracking-[0.14em] text-sun-300">We&apos;re hiring</p>
             <h2 className="mt-3 text-4xl font-bold sm:text-5xl">Our Team Leaders are the heart of every program.</h2>
-            <p className="mt-5 max-w-xl text-lg leading-relaxed text-jade-50/90">
+            <p className="mt-5 max-w-xl text-lg leading-relaxed text-brand-50">
               Work with TK–12 students at a school in your own community, with flexible shift scheduling and a real
               path into education. Create a free applicant account, apply in minutes, and track your status online.
             </p>
@@ -227,7 +227,7 @@ export default function HomePage() {
               <ButtonLink href="/careers" variant="light" size="lg">
                 See open roles <ArrowRight className="size-4" />
               </ButtonLink>
-              <ButtonLink href="/signup" size="lg">
+              <ButtonLink href="/signup" size="lg" className="bg-ink-900 hover:bg-black">
                 Create an account
               </ButtonLink>
             </div>
@@ -236,7 +236,7 @@ export default function HomePage() {
             {["Create your applicant account", "Pick a role and the districts near you", "Upload your résumé and submit", "Track your application in your portal"].map(
               (step, i) => (
                 <li key={step} className="flex items-center gap-4 rounded-2xl bg-white/10 px-5 py-4 backdrop-blur">
-                  <span className="grid size-9 shrink-0 place-items-center rounded-full bg-brand-600 font-display font-bold text-white">
+                  <span className="grid size-9 shrink-0 place-items-center rounded-full bg-white font-display font-bold text-brand-700">
                     {i + 1}
                   </span>
                   <span className="font-semibold">{step}</span>
