@@ -51,7 +51,7 @@ edit(/(<body[^>]*>)/, `$1\n${banner}`);
 // Headings: color a word or two.
 edit(
   ">Serving With Heart, Growing With Purpose</h1>",
-  '>Serving With <span class="v4-word-sun">Heart</span>, Growing With <span class="v4-word-squiggle">Purpose</span></h1>',
+  '>Serving With <span class="v4-word-sun">Heart</span>, Growing With <span class="v4-word-highlight">Purpose</span></h1>',
 );
 
 edit(
