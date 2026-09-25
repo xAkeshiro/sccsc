@@ -314,9 +314,6 @@ body.v4 .elementor-element-87c0020 .e-loop-item:nth-child(3n) > .e-con {
 body.v4 .elementor-element.elementor-element-2762c03 {
   background-color: var(--v4-ink) !important;
 }
-body.v4 .elementor-element.elementor-element-5c769d0 {
-  background-color: #0c151c !important;
-}
 body.v4 :is(.elementor-element-4b5bec2, .elementor-element-748e205, .elementor-element-2aa518f, .elementor-element-a78c4aa)
   h4::after {
   background: var(--v4-sun-300) !important;
