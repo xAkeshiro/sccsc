@@ -3,12 +3,12 @@ import Link from "next/link";
 import { org } from "@/content/site";
 
 /** Official logo when configured in content/site.ts; otherwise a text wordmark placeholder. */
-export function Logo({ inverted = false }: { inverted?: boolean }) {
+export function Logo({ inverted = false, href = "/demo" }: { inverted?: boolean; href?: string }) {
   const src = inverted ? (org.logo.invertedSrc ?? org.logo.src) : org.logo.src;
   if (src) {
     return (
       <Link
-        href="/demo"
+        href={href}
         aria-label={`${org.shortName} — ${org.name}, home`}
         // The logo has dark lettering, so give it a light plate on dark backgrounds unless a white version exists.
         className={`inline-block shrink-0 ${inverted && !org.logo.invertedSrc ? "rounded-xl bg-white px-3 py-2.5" : ""}`}
@@ -18,7 +18,7 @@ export function Logo({ inverted = false }: { inverted?: boolean }) {
     );
   }
   return (
-    <Link href="/demo" className="group flex items-center gap-3" aria-label={`${org.shortName} — ${org.name}, home`}>
+    <Link href={href} className="group flex items-center gap-3" aria-label={`${org.shortName} — ${org.name}, home`}>
       <span
         aria-hidden
         className={`grid size-10 place-items-center rounded-xl font-display text-lg font-extrabold ${

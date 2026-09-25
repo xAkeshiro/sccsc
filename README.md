@@ -4,6 +4,8 @@ A redesign of [sccsc.org](https://sccsc.org) for the Sacramento Chinese Communit
 
 **Layout:** the site root (`/`) serves a static copy of the Center's current WordPress site. The redesign lives under **`/demo`** (e.g. `/demo/careers`, `/demo/admin`). See [Current WordPress site](#current-wordpress-site).
 
+**Design explorations:** `/v3` is a warmer, more colorful take on the redesign's home page (home page only for now; its links go to the `/demo` pages). Its building blocks are in `src/components/v3.tsx`, and its photos, taken from the current site, are in `public/photos/v3/`.
+
 **Why the redesign:** see [`docs/site-audit.md`](docs/site-audit.md).
 
 ## Stack
@@ -52,6 +54,7 @@ src/
   app/demo/(site)/login|signup
   app/demo/admin/        ← HR dashboard: overview, applications pipeline, job postings
   app/demo/jobs.xml/     ← Indeed job feed (open jobs, live)
+  app/v3/                ← design exploration: colorful home page (components/v3.tsx)
   lib/job-syndication.ts ← shared Indeed / Google for Jobs job data
   app/api/auth/          ← Better Auth endpoints
   db/schema.ts           ← tables (auth + jobs, applications, résumés, events)

@@ -4,11 +4,12 @@ import { MobileNav } from "./mobile-nav";
 import { ButtonLink, Container } from "./ui";
 import Link from "next/link";
 
-export function SiteHeader() {
+/** `homeHref` is where the logo links: the redesign home by default, or a design exploration such as /v3. */
+export function SiteHeader({ homeHref }: { homeHref?: string } = {}) {
   return (
     <header className="sticky top-0 z-40 border-b border-cream-300/70 bg-cream-100/90 backdrop-blur">
       <Container className="flex h-18 items-center justify-between gap-6 py-3">
-        <Logo />
+        <Logo href={homeHref} />
         <nav aria-label="Main" className="hidden items-center gap-1 lg:flex">
           {mainNav.map((item) => (
             <Link

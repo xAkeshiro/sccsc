@@ -88,17 +88,20 @@ export function PhotoSlot({
   tone = "jade",
   className,
   priority,
+  sizes = "(min-width: 1024px) 30vw, 50vw",
 }: {
   label: string;
   src?: string | null;
   tone?: keyof typeof photoTones;
   className?: string;
   priority?: boolean;
+  /** How wide the photo renders, so the browser downloads a suitably sized file. */
+  sizes?: string;
 }) {
   if (src) {
     return (
       <div className={cx("relative overflow-hidden rounded-3xl bg-cream-200", className)}>
-        <Image src={src} alt={label} fill priority={priority} sizes="(min-width: 1024px) 30vw, 50vw" className="object-cover" />
+        <Image src={src} alt={label} fill priority={priority} sizes={sizes} className="object-cover" />
       </div>
     );
   }

@@ -3,13 +3,13 @@ import { mainNav, org } from "@/content/site";
 import { Logo } from "./logo";
 import { Container } from "./ui";
 
-export function SiteFooter() {
+export function SiteFooter({ homeHref }: { homeHref?: string } = {}) {
   const { address } = org;
   return (
     <footer className="relative mt-auto overflow-hidden bg-ink-900 text-ink-100">
       <Container className="relative grid gap-10 py-14 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div>
-          <Logo inverted />
+          <Logo inverted href={homeHref} />
           <p className="mt-5 max-w-xs text-sm leading-relaxed text-ink-300">
             {org.name} is a 501(c)(3) nonprofit supporting Sacramento-area students, families and communities since{" "}
             {org.founded}.
