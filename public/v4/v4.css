@@ -302,7 +302,7 @@ body.v4 .elementor-element.elementor-element-c07b29c {
 /* Lift the kids-in-a-circle photo (bottom right) so the kids aren't cut off (desktop). */
 @media (min-width: 1025px) {
   body.v4 .elementor-element.elementor-element-c07b29c:not(.elementor-motion-effects-element-type-background) {
-    background-position: 100% 100% !important;
+    background-position: 100% 118% !important;
   }
 }
 body.v4 .elementor-element-87c0020 .e-loop-item > .e-con {
