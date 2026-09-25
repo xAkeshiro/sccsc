@@ -6,7 +6,7 @@ A redesign of [sccsc.org](https://sccsc.org) for the Sacramento Chinese Communit
 
 **Design explorations:** `/v3` is a warmer, more colorful take on the redesign's home page (home page only for now; its links go to the `/demo` pages). Its building blocks are in `src/components/v3.tsx`, and its photos, taken from the current site, are in `public/photos/v3/`.
 
-`/v4` is the **current WordPress home page with more color**: the same page and content, restyled. `npm run v4:build` copies `public/index.html` to `public/v4/index.html` and adds a few markup changes: a preview banner, wavy section edges, two highlighted hero words, and the real counter totals, since the export left the counters stuck at 0. The restyling itself is in `public/v4/v4.css`. It overrides Elementor's own element styles, so any of it could also be applied to the live WordPress site. The fonts are self-hosted in `public/v4/fonts/` under the SIL Open Font License. Re-run the script after refreshing the WordPress export.
+`/v4` is the **current WordPress home page with more color**: the same page and content, restyled. `npm run v4:build` copies `public/index.html` to `public/v4/index.html` and adds a few markup changes: a preview banner, a wavy edge under the hero, two highlighted hero words, and the real counter totals, since the export left the counters stuck at 0. The restyling itself is in `public/v4/v4.css`. It overrides Elementor's own element styles, so any of it could also be applied to the live WordPress site. The fonts are self-hosted in `public/v4/fonts/` under the SIL Open Font License. Re-run the script after refreshing the WordPress export.
 
 **Why the redesign:** see [`docs/site-audit.md`](docs/site-audit.md).
 

@@ -24,7 +24,7 @@ function edit(find: string | RegExp, replace: string | ((match: string, ...group
   html = typeof replace === "string" ? html.replace(pattern, replace) : html.replace(pattern, replace);
 }
 
-const wave = (tone: string, direction: "up" | "down", extra = "") =>
+const wave = (tone: string, direction: "up", extra = "") =>
   `<div aria-hidden="true" class="v4-wave v4-wave--${tone} v4-wave--${direction}${extra ? ` ${extra}` : ""}"></div>`;
 
 const banner =
@@ -67,13 +67,9 @@ edit(
   4,
 );
 
-// Wave edges between sections.
+// A wavy edge under the hero.
 const section = (id: string) => `<div class="elementor-element elementor-element-${id} `;
 edit(section("95ee5d7"), `${wave("cream", "up", "v4-wave--overlap")}${section("95ee5d7")}`);
-edit(section("5006684"), `${wave("sun", "up")}${section("5006684")}`);
-edit(section("bcf2712"), `${wave("sun", "down")}${section("bcf2712")}`);
-edit(section("591ced0"), `${wave("lake", "up")}${section("591ced0")}`);
-edit(section("1030bb4"), `${wave("lake", "down")}${section("1030bb4")}`);
 edit(section("2762c03"), `<div aria-hidden="true" class="v4-stripe"></div>${section("2762c03")}`);
 
 mkdirSync("public/v4", { recursive: true });
