@@ -278,7 +278,7 @@ body.v4 .v4-word-squiggle {
   padding-bottom: 0.12em;
 }
 
-/* ---------- Wavy edges and the activity ribbon (added by the build script) ---------- */
+/* ---------- Wavy edges (added by the build script) ---------- */
 .v4-wave {
   background: no-repeat center / 100% 100%;
   display: block;
@@ -301,59 +301,6 @@ body.v4 .v4-word-squiggle {
 }
 .v4-wave--lake {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 56' preserveAspectRatio='none'%3E%3Cpath d='M0 30C240 2 480 2 720 26s480 26 720 0v30H0Z' fill='%23dff0f6'/%3E%3C/svg%3E");
-}
-
-.v4-ribbon {
-  overflow: hidden;
-  padding: 28px 0;
-}
-.v4-ribbon__band {
-  background: #d0112b;
-  border-block: 2px solid #13202a;
-  color: #fff;
-  font: 700 22px/1 "Bricolage Grotesque", system-ui, sans-serif;
-  margin: 0 -5%;
-  padding: 14px 0;
-  transform: rotate(-2deg);
-}
-.v4-ribbon__track {
-  animation: v4-marquee 50s linear infinite;
-  display: flex;
-  width: max-content;
-}
-.v4-ribbon__track:hover {
-  animation-play-state: paused;
-}
-.v4-ribbon ul {
-  align-items: center;
-  display: flex;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.v4-ribbon li {
-  align-items: center;
-  display: flex;
-  white-space: nowrap;
-}
-.v4-ribbon li span {
-  padding: 0 20px;
-}
-.v4-ribbon li svg {
-  color: #f8cf6f;
-  flex: none;
-  height: 16px;
-  width: 16px;
-}
-@keyframes v4-marquee {
-  to {
-    transform: translateX(-50%);
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .v4-ribbon__track {
-    animation: none;
-  }
 }
 
 /* ---------- Welcome ---------- */
@@ -390,8 +337,8 @@ body.v4 :is(.elementor-element-cf60ed8, .elementor-element-b67d1dc, .elementor-e
 body.v4 :is(.elementor-element-533fa41, .elementor-element-384afcf) {
   --v4-blob: var(--v4-coral-300);
 }
-/* Keep the blobs and tilted tiles from widening the page. */
-body.v4 :is(.elementor-element-95ee5d7, .elementor-element-591ced0, .elementor-element-bcf2712) {
+/* Keep the photo blobs from widening the page. */
+body.v4 :is(.elementor-element-95ee5d7, .elementor-element-591ced0) {
   overflow-x: clip !important;
 }
 
@@ -436,40 +383,9 @@ body.v4 :is(.elementor-element-c7f367e, .elementor-element-87c0020) .elementor-b
   font-weight: 800 !important;
 }
 
-/* ---------- Counters become colored stickers ---------- */
+/* ---------- Counters: original layout and colors, on the cream page ---------- */
 body.v4 .elementor-element.elementor-element-bcf2712 {
   background-color: transparent !important;
-}
-body.v4 .elementor-element-bcf2712 .elementor-widget-counter {
-  background: var(--v4-tile, var(--v4-sun-300));
-  border: 2px solid var(--v4-ink);
-  border-radius: 28px;
-  box-shadow: var(--v4-hard);
-  padding: 22px 24px;
-  transform: rotate(var(--v4-tilt, -2deg));
-}
-body.v4 .elementor-element-442de08 {
-  --v4-tile: var(--v4-lake-200);
-  --v4-tilt: 1deg;
-}
-body.v4 .elementor-element-5fa0a81 {
-  --v4-tile: var(--v4-coral-200);
-  --v4-tilt: -1deg;
-}
-body.v4 .elementor-element-5a489f3 {
-  --v4-tile: var(--v4-red);
-  --v4-tilt: 2deg;
-}
-body.v4 .elementor-element-bcf2712 .elementor-counter-number-wrapper {
-  color: var(--v4-ink) !important;
-  font-weight: 800 !important;
-}
-body.v4 .elementor-element-bcf2712 .elementor-counter-title {
-  color: var(--v4-ink-soft) !important;
-  font-weight: 600 !important;
-}
-body.v4 .elementor-element-5a489f3 :is(.elementor-counter-number-wrapper, .elementor-counter-title) {
-  color: #fff !important;
 }
 
 /* ---------- Mission ---------- */
@@ -531,16 +447,6 @@ body.v4 :is(.elementor-element-4b5bec2, .elementor-element-748e205, .elementor-e
   }
   .v4-wave--overlap {
     margin-top: -27px;
-  }
-  .v4-ribbon {
-    padding: 20px 0;
-  }
-  .v4-ribbon__band {
-    font-size: 17px;
-    padding: 11px 0;
-  }
-  body.v4 .elementor-element-bcf2712 .elementor-widget-counter {
-    padding: 16px 18px;
   }
   body.v4 .elementor-element-5b44acb .elementor-icon-list-text {
     font-size: 13px !important;

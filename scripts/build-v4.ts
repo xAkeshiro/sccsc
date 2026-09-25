@@ -24,29 +24,8 @@ function edit(find: string | RegExp, replace: string | ((match: string, ...group
   html = typeof replace === "string" ? html.replace(pattern, replace) : html.replace(pattern, replace);
 }
 
-const sparkle =
-  '<svg aria-hidden="true" viewBox="0 0 24 24"><path fill="currentColor" d="M12 0c.9 6.4 4.6 10.2 12 12-7.4 1.8-11.1 5.6-12 12-.9-6.4-4.6-10.2-12-12C7.4 10.2 11.1 6.4 12 0Z"/></svg>';
-
 const wave = (tone: string, direction: "up" | "down", extra = "") =>
   `<div aria-hidden="true" class="v4-wave v4-wave--${tone} v4-wave--${direction}${extra ? ` ${extra}` : ""}"></div>`;
-
-// Each phrase comes from the page's own copy (welcome, programs and mission sections).
-const activities = [
-  "Before & after school",
-  "Project-based learning",
-  "Reading tutors",
-  "Youth development",
-  "Workforce training",
-  "College & career readiness",
-  "Health education",
-  "Family support",
-  "Community partnerships",
-];
-const ribbonItems = () =>
-  [...activities, ...activities]
-    .map((a) => `<li><span>${a.replace("&", "&amp;")}</span>${sparkle}</li>`)
-    .join("");
-const ribbon = `<div class="v4-ribbon" role="region" aria-label="What we do"><div class="v4-ribbon__band"><div class="v4-ribbon__track"><ul>${ribbonItems()}</ul><ul aria-hidden="true">${ribbonItems()}</ul></div></div></div>`;
 
 const banner =
   '<div class="v4-banner">Design preview v4: the current sccsc.org home page with more color. Not the official website. ' +
@@ -88,9 +67,9 @@ edit(
   4,
 );
 
-// Wave edges and the activity ribbon between sections.
+// Wave edges between sections.
 const section = (id: string) => `<div class="elementor-element elementor-element-${id} `;
-edit(section("95ee5d7"), `${wave("cream", "up", "v4-wave--overlap")}${ribbon}${section("95ee5d7")}`);
+edit(section("95ee5d7"), `${wave("cream", "up", "v4-wave--overlap")}${section("95ee5d7")}`);
 edit(section("5006684"), `${wave("sun", "up")}${section("5006684")}`);
 edit(section("bcf2712"), `${wave("sun", "down")}${section("bcf2712")}`);
 edit(section("591ced0"), `${wave("lake", "up")}${section("591ced0")}`);
