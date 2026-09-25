@@ -53,6 +53,9 @@ const section = (id: string) => `<div class="elementor-element elementor-element
 edit(section("95ee5d7"), `${wave("cream", "up", "v4-wave--overlap")}${section("95ee5d7")}`);
 edit(section("2762c03"), `<div aria-hidden="true" class="v4-stripe"></div>${section("2762c03")}`);
 
+// Scroll effects (see public/v4/v4.js).
+edit("</body>", '<script src="/v4/v4.js" defer></script>\n</body>');
+
 mkdirSync("public/v4", { recursive: true });
 writeFileSync(TARGET, html);
 console.log(`✓ Wrote ${TARGET} (${Math.round(html.length / 1024)} KB)`);

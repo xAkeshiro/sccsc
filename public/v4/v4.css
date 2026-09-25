@@ -338,3 +338,59 @@ body.v4 :is(.elementor-element-4b5bec2, .elementor-element-748e205, .elementor-e
     margin-top: -27px;
   }
 }
+
+/* ---------- Motion (skipped when the visitor prefers reduced motion) ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  /* Hero: label, heading, subtitle and button rise in one after another on load. */
+  body.v4
+    :is(
+      .elementor-element-5b44acb,
+      .elementor-element-0a87c71,
+      .elementor-element-40c9842,
+      .elementor-element-091eaa8
+    ) {
+    animation: v4-rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+  body.v4 .elementor-element-0a87c71 {
+    animation-delay: 0.15s;
+  }
+  body.v4 .elementor-element-40c9842 {
+    animation-delay: 0.35s;
+  }
+  body.v4 .elementor-element-091eaa8 {
+    animation-delay: 0.5s;
+  }
+  body.v4 .v4-word-highlight {
+    animation: v4-pop 0.5s cubic-bezier(0.3, 1.5, 0.5, 1) 0.9s both;
+  }
+  /* Scroll reveals, set up by v4.js. */
+  body.v4 .v4-reveal {
+    opacity: 0;
+    transition:
+      opacity 0.7s ease var(--v4-delay, 0s),
+      translate 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) var(--v4-delay, 0s),
+      scale 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) var(--v4-delay, 0s);
+    translate: 0 28px;
+  }
+  body.v4 .v4-reveal--zoom {
+    scale: 0.94;
+    translate: 0 16px;
+  }
+  body.v4 .v4-reveal.v4-in {
+    opacity: 1;
+    scale: none;
+    translate: none;
+  }
+}
+@keyframes v4-rise {
+  from {
+    opacity: 0;
+    translate: 0 24px;
+  }
+}
+@keyframes v4-pop {
+  from {
+    opacity: 0;
+    scale: 0.6;
+  }
+}
