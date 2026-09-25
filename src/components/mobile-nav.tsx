@@ -33,7 +33,7 @@ export function MobileNav() {
                 {item.label}
               </Link>
             ))}
-            <Link href="/portal" className="rounded-xl px-3 py-3 text-lg font-semibold text-ink-900 hover:bg-cream-200">
+            <Link href="/demo/portal" className="rounded-xl px-3 py-3 text-lg font-semibold text-ink-900 hover:bg-cream-200">
               Applicant login
             </Link>
             <a href={org.donateUrl} className={`${buttonClass({ variant: "accent" })} mt-3`}>

@@ -21,7 +21,7 @@ export function SiteHeader() {
           ))}
         </nav>
         <div className="hidden items-center gap-2 lg:flex">
-          <Link href="/portal" className="px-3 py-2 text-sm font-semibold text-ink-700 hover:text-jade-700">
+          <Link href="/demo/portal" className="px-3 py-2 text-sm font-semibold text-ink-700 hover:text-jade-700">
             Applicant login
           </Link>
           <ButtonLink href={org.donateUrl} variant="accent" size="sm">

@@ -14,8 +14,8 @@ export default function NotFound() {
           <h1 className="mt-4 text-3xl font-bold">We couldn&apos;t find that page</h1>
           <p className="mt-2 text-ink-700">It may have moved during our website refresh.</p>
           <div className="mt-8 flex justify-center gap-3">
-            <ButtonLink href="/">Go home</ButtonLink>
-            <ButtonLink href="/careers" variant="secondary">
+            <ButtonLink href="/demo">Go home</ButtonLink>
+            <ButtonLink href="/demo/careers" variant="secondary">
               See open jobs
             </ButtonLink>
           </div>

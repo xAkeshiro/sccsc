@@ -16,7 +16,7 @@ export function SignOutButton({ className }: { className?: string }) {
       onClick={async () => {
         setPending(true);
         await signOut();
-        router.replace("/");
+        router.replace("/demo");
         router.refresh();
       }}
       className={cx("inline-flex items-center gap-1.5 text-sm font-semibold text-ink-700 hover:text-brand-700", className)}

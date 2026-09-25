@@ -5,7 +5,8 @@ import { siteUrl } from "@/lib/site-url";
 export default function robots(): MetadataRoute.Robots {
   if (!isLive()) return { rules: { userAgent: "*", disallow: "/" } };
   return {
-    rules: { userAgent: "*", allow: "/", disallow: ["/admin", "/portal", "/api/"] },
-    sitemap: new URL("/sitemap.xml", siteUrl()).toString(),
+    rules: { userAgent: "*", allow: "/", disallow: ["/demo/admin", "/demo/portal", "/api/"] },
+    // The imported WordPress pages keep their Rank Math sitemaps; the redesign has its own.
+    sitemap: [new URL("/sitemap_index.xml", siteUrl()).toString(), new URL("/demo/sitemap.xml", siteUrl()).toString()],
   };
 }

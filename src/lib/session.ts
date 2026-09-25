@@ -35,19 +35,19 @@ export const getCurrentUser = cache(async (): Promise<SessionUser | null> => {
 });
 
 /** Only allow same-site relative paths as post-login destinations. */
-export function safeNext(next: string | null | undefined, fallback = "/portal") {
+export function safeNext(next: string | null | undefined, fallback = "/demo/portal") {
   if (!next || !next.startsWith("/") || next.startsWith("//") || next.startsWith("/\\")) return fallback;
   return next;
 }
 
 export async function requireUser(next?: string): Promise<SessionUser> {
   const user = await getCurrentUser();
-  if (!user) redirect(`/login?next=${encodeURIComponent(safeNext(next))}`);
+  if (!user) redirect(`/demo/login?next=${encodeURIComponent(safeNext(next))}`);
   return user;
 }
 
 export async function requireAdmin(): Promise<SessionUser> {
-  const user = await requireUser("/admin");
+  const user = await requireUser("/demo/admin");
   // 404 rather than 403 so the admin area isn't advertised to applicants.
   if (user.role !== "admin") notFound();
   return user;

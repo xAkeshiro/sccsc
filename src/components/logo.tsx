@@ -8,7 +8,7 @@ export function Logo({ inverted = false }: { inverted?: boolean }) {
   if (src) {
     return (
       <Link
-        href="/"
+        href="/demo"
         aria-label={`${org.shortName} — ${org.name}, home`}
         // The logo has dark lettering, so give it a light plate on dark backgrounds unless a white version exists.
         className={`inline-block shrink-0 ${inverted && !org.logo.invertedSrc ? "rounded-xl bg-white px-3 py-2.5" : ""}`}
@@ -18,7 +18,7 @@ export function Logo({ inverted = false }: { inverted?: boolean }) {
     );
   }
   return (
-    <Link href="/" className="group flex items-center gap-3" aria-label={`${org.shortName} — ${org.name}, home`}>
+    <Link href="/demo" className="group flex items-center gap-3" aria-label={`${org.shortName} — ${org.name}, home`}>
       <span
         aria-hidden
         className={`grid size-10 place-items-center rounded-xl font-display text-lg font-extrabold ${

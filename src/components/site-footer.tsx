@@ -37,7 +37,7 @@ export function SiteFooter() {
               </li>
             ))}
             <li>
-              <Link href="/contact" className="text-ink-300 hover:text-white">
+              <Link href="/demo/contact" className="text-ink-300 hover:text-white">
                 Contact
               </Link>
             </li>
@@ -74,7 +74,7 @@ export function SiteFooter() {
           © {new Date().getFullYear()} {org.name}. All rights reserved.
         </p>
         <p>
-          <Link href="/portal" className="hover:text-white">
+          <Link href="/demo/portal" className="hover:text-white">
             Applicant login
           </Link>
         </p>

@@ -155,11 +155,11 @@ export const programs = [
 ] as const;
 
 export const mainNav = [
-  { href: "/programs", label: "Programs" },
-  { href: "/families", label: "Families" },
-  { href: "/careers", label: "Careers" },
-  { href: "/get-involved", label: "Get Involved" },
-  { href: "/about", label: "About" },
+  { href: "/demo/programs", label: "Programs" },
+  { href: "/demo/families", label: "Families" },
+  { href: "/demo/careers", label: "Careers" },
+  { href: "/demo/get-involved", label: "Get Involved" },
+  { href: "/demo/about", label: "About" },
 ] as const;
 
 /** Options surfaced on the application form. */

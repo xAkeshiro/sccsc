@@ -37,7 +37,7 @@ export function AuthForm({ mode, next }: { mode: "login" | "signup"; next: strin
     router.refresh();
   }
 
-  const alt = mode === "login" ? "/signup" : "/login";
+  const alt = mode === "login" ? "/demo/signup" : "/demo/login";
   const altHref = `${alt}?next=${encodeURIComponent(next)}`;
 
   return (

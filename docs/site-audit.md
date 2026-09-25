@@ -53,6 +53,16 @@ A parent who wants to know whether there's a program at their child's school has
 - The name varies across the web: "SCCSC," "The Center," "The Center (SCCSC)," and the full name.
 - A `site:sccsc.org` search returns very few pages, so search coverage is thin.
 
+## Found in the site export
+
+A Simply Static export of the WordPress site (September 2026) turned up a few concrete problems:
+
+- **Broken careers page header on desktop.** A custom CSS snippet on the Careers page opens `@media (max-width: 767px) {` and never closes it. Every style after it, including the site header, then only applies on phones, so desktop visitors get a stacked, unstyled header with green Elementor-default buttons. It's on the page candidates are most likely to land on.
+- **Broken image paths.** Elementor saved some image URLs as server paths (`/srv/htdocs/wp-content/…`), which don't load outside WordPress.com's servers.
+- **Applicant files stored in the web uploads folder.** Around 430 files submitted through the site's forms, likely résumés, sit in `wp-content/uploads/elementor/forms/`, the public uploads directory. They're only hidden by their random file names. The redesign keeps résumés in the database and serves them only to the applicant and admins.
+- **A heavy media library.** The export was 633 MB, but the pages use about 50 MB of it. Some photos are 8–11 MB originals.
+- **Stack sprawl.** Elementor and Elementor Pro, GiveWP, Rank Math, a static-export plugin and a migration plugin, on WordPress.com hosting, plus Jetpack and Gutenberg.
+
 ## What the rebuild changes
 
 | Problem | Rebuild |

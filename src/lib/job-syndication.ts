@@ -3,12 +3,12 @@ import type { Job } from "@/db/schema";
 import { siteUrl } from "@/lib/site-url";
 
 /**
- * Shared job data for outside job boards: the Indeed XML feed (/jobs.xml) and Google for Jobs
+ * Shared job data for outside job boards: the Indeed XML feed (/demo/jobs.xml) and Google for Jobs
  * (JSON-LD on each job page). The site is the source of truth — both read from the same jobs table.
  */
 
 export function jobUrl(job: Pick<Job, "slug">) {
-  return new URL(`/careers/${job.slug}`, siteUrl()).toString();
+  return new URL(`/demo/careers/${job.slug}`, siteUrl()).toString();
 }
 
 /**

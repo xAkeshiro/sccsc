@@ -11,7 +11,7 @@ export async function AuthPage({ mode, nextParam }: { mode: "login" | "signup"; 
   const next = safeNext(typeof nextParam === "string" ? nextParam : undefined);
   if (await getCurrentUser()) redirect(next);
 
-  const applying = next.startsWith("/careers/");
+  const applying = next.startsWith("/demo/careers/");
   return (
     <Container className="py-16 sm:py-24">
       <div className="mx-auto max-w-md">
