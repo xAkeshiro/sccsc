@@ -1,0 +1,548 @@
+/*
+ * v4 design preview: the current WordPress home page with more color.
+ *
+ * Loaded last by public/v4/index.html (generated from the Simply Static export by
+ * scripts/build-v4.ts). Elementor's rules are very specific and often !important, so these
+ * overrides are too. Element IDs (e.g. .elementor-element-5006684) are Elementor's own, so each
+ * rule maps to a setting that could also be changed in Elementor on the live site.
+ */
+
+/* Self-hosted (SIL Open Font License; see fonts/). Latin subset only. */
+@font-face {
+  font-display: swap;
+  font-family: "Bricolage Grotesque";
+  font-style: normal;
+  font-weight: 500 800;
+  src: url("/v4/fonts/bricolage-grotesque-latin.woff2") format("woff2");
+}
+@font-face {
+  font-display: swap;
+  font-family: "Figtree";
+  font-style: normal;
+  font-weight: 400 800;
+  src: url("/v4/fonts/figtree-latin.woff2") format("woff2");
+}
+
+body.v4 {
+  --v4-red: #d0112b;
+  --v4-red-dark: #a80d23;
+  --v4-ink: #13202a;
+  --v4-ink-soft: #33424e;
+  --v4-cream: #fbf6ee;
+  --v4-sun-100: #fdf0d2;
+  --v4-sun-200: #fbe2a0;
+  --v4-sun-300: #f8cf6f;
+  --v4-sun-400: #f6b93b;
+  --v4-lake-100: #dff0f6;
+  --v4-lake-200: #c4e5f1;
+  --v4-lake-300: #9fd3e6;
+  --v4-coral-100: #ffe4d9;
+  --v4-coral-200: #ffcdb8;
+  --v4-coral-300: #ffae8d;
+  --v4-display: "Bricolage Grotesque", "Onest", system-ui, sans-serif;
+  --v4-body: "Figtree", "Instrument Sans", system-ui, sans-serif;
+  --v4-hard-sm: 2px 2px 0 0 var(--v4-ink);
+  --v4-hard: 4px 4px 0 0 var(--v4-ink);
+  --v4-hard-lg: 6px 6px 0 0 var(--v4-ink);
+  background-color: var(--v4-cream) !important;
+  font-family: var(--v4-body);
+}
+
+/* Elementor Site Settings: global text color and fonts. */
+body.v4.elementor-kit-8 {
+  --e-global-color-text: #13202a;
+  --e-global-typography-primary-font-family: "Bricolage Grotesque";
+  --e-global-typography-secondary-font-family: "Bricolage Grotesque";
+  --e-global-typography-text-font-family: "Figtree";
+  --e-global-typography-accent-font-family: "Figtree";
+}
+
+/* Many widgets name their font directly, so set both families explicitly. */
+body.v4 :is(h1, h2, h3, h4, h5, h6),
+body.v4 :is(h1, h2, h3, h4, h5, h6) *,
+body.v4 .elementor-counter-number-wrapper {
+  font-family: var(--v4-display) !important;
+}
+/* The big section headings get heavier; card titles and excerpts (also headings) don't. */
+body.v4
+  :is(
+    .elementor-element-0a87c71,
+    .elementor-element-d924bec,
+    .elementor-element-d02d5df,
+    .elementor-element-6b70dd2,
+    .elementor-element-0f1172a,
+    .elementor-element-18c75c2
+  )
+  .elementor-heading-title {
+  font-weight: 800 !important;
+  letter-spacing: -0.5px !important;
+}
+body.v4
+  :is(
+    p,
+    li,
+    .elementor-button,
+    .elementor-icon-list-text,
+    .elementor-counter-title,
+    .elementor-item,
+    .elementor-field,
+    .elementor-image-box-description,
+    .elementor-widget-text-editor,
+    span.elementor-heading-title,
+    p.elementor-heading-title
+  ) {
+  font-family: var(--v4-body) !important;
+}
+/* Blog excerpts are marked up as h2s but read as body text. */
+body.v4 .elementor-element-6f2236c .elementor-heading-title {
+  font-family: var(--v4-body) !important;
+  font-weight: 400 !important;
+}
+
+/* ---------- Preview banner (added by the build script) ---------- */
+.v4-banner {
+  background: #f6b93b;
+  color: #13202a;
+  font: 600 13px/1.5 "Figtree", system-ui, sans-serif;
+  padding: 7px 16px;
+  text-align: center;
+}
+.v4-banner a {
+  color: inherit;
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ---------- Header ---------- */
+body.v4 .elementor-element.elementor-element-97cacbb {
+  background-color: var(--v4-red) !important;
+}
+body.v4 .elementor-element-2a62cad .elementor-social-icon {
+  background-color: rgb(255 255 255 / 0.18) !important;
+}
+body.v4 .elementor-element.elementor-element-55b5d79 {
+  background-color: var(--v4-cream) !important;
+  border-bottom: 2px solid var(--v4-ink) !important;
+}
+
+/* ---------- Sticker buttons ---------- */
+body.v4
+  :is(
+    .elementor-element-d88821c,
+    .elementor-element-091eaa8,
+    .elementor-element-fd96ba2,
+    .elementor-element-b4367cb,
+    .elementor-element-404d64c,
+    .elementor-element-cb8ed74,
+    .elementor-element-9c6fcf4
+  )
+  .elementor-button {
+  border: 2px solid var(--v4-ink) !important;
+  border-radius: 999px !important;
+  box-shadow: var(--v4-hard) !important;
+  font-weight: 700 !important;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    background-color 0.15s ease !important;
+}
+body.v4
+  :is(
+    .elementor-element-d88821c,
+    .elementor-element-091eaa8,
+    .elementor-element-fd96ba2,
+    .elementor-element-b4367cb,
+    .elementor-element-404d64c,
+    .elementor-element-cb8ed74,
+    .elementor-element-9c6fcf4
+  )
+  .elementor-button:hover {
+  box-shadow: var(--v4-hard-lg) !important;
+  transform: translate(-1px, -1px);
+}
+body.v4
+  :is(
+    .elementor-element-d88821c,
+    .elementor-element-091eaa8,
+    .elementor-element-fd96ba2,
+    .elementor-element-b4367cb,
+    .elementor-element-404d64c,
+    .elementor-element-cb8ed74,
+    .elementor-element-9c6fcf4
+  )
+  .elementor-button:active {
+  box-shadow: none !important;
+  transform: translate(2px, 2px);
+}
+/* Marigold buttons over photos, a white one on the sky-blue section; the rest stay logo red. */
+body.v4 :is(.elementor-element-091eaa8, .elementor-element-cb8ed74) .elementor-button {
+  background-color: var(--v4-sun-300) !important;
+  color: var(--v4-ink) !important;
+  fill: var(--v4-ink) !important;
+}
+body.v4 :is(.elementor-element-091eaa8, .elementor-element-cb8ed74) .elementor-button:hover {
+  background-color: var(--v4-sun-400) !important;
+}
+body.v4 .elementor-element-404d64c .elementor-button {
+  background-color: #fff !important;
+  color: var(--v4-ink) !important;
+}
+body.v4 .elementor-element-404d64c .elementor-button:hover {
+  background-color: var(--v4-cream) !important;
+}
+
+/* ---------- Section labels (the heart + text above each heading) become stickers ---------- */
+body.v4
+  :is(
+    .elementor-element-5b44acb,
+    .elementor-element-f46c92c,
+    .elementor-element-5e43027,
+    .elementor-element-6dcc8b4,
+    .elementor-element-ce3c6db
+  )
+  .elementor-icon-list-item {
+  background: var(--v4-sticker, #fff);
+  border: 2px solid var(--v4-ink);
+  border-radius: 999px;
+  box-shadow: var(--v4-hard-sm);
+  display: inline-flex !important;
+  padding: 5px 16px 5px 10px !important;
+  transform: rotate(-2deg);
+  width: auto !important;
+}
+body.v4
+  :is(
+    .elementor-element-5b44acb,
+    .elementor-element-f46c92c,
+    .elementor-element-5e43027,
+    .elementor-element-6dcc8b4,
+    .elementor-element-ce3c6db
+  )
+  .elementor-icon-list-text {
+  color: var(--v4-ink) !important;
+  font-weight: 700 !important;
+}
+body.v4 .elementor-element-f46c92c {
+  --v4-sticker: var(--v4-sun-300);
+}
+body.v4 .elementor-element-6dcc8b4 {
+  --v4-sticker: var(--v4-coral-200);
+}
+body.v4 .elementor-element-ce3c6db {
+  --v4-sticker: var(--v4-lake-200);
+}
+
+/* Heading highlights replace the red brush-stroke image under one word. */
+body.v4
+  :is(
+    .elementor-element.elementor-element-d924bec,
+    .elementor-element.elementor-element-d02d5df,
+    .elementor-element.elementor-element-6b70dd2,
+    .elementor-element.elementor-element-18c75c2
+  )
+  h2
+  span {
+  background-image: linear-gradient(
+    transparent 50%,
+    var(--v4-hl, var(--v4-sun-300)) 50%,
+    var(--v4-hl, var(--v4-sun-300)) 86%,
+    transparent 86%
+  ) !important;
+  background-position: 0 0 !important;
+  background-size: 100% 100% !important;
+  padding: 0 0.06em !important;
+}
+body.v4 .elementor-element-d02d5df {
+  --v4-hl: var(--v4-coral-300);
+}
+body.v4 .elementor-element-18c75c2 {
+  --v4-hl: var(--v4-lake-300);
+}
+
+/* ---------- Hero ---------- */
+body.v4 .elementor-element.elementor-element-de8ad0d::before {
+  background-image: linear-gradient(
+    280deg,
+    rgb(126 10 26 / 0) 24%,
+    rgb(126 10 26 / 0.6) 55%,
+    rgb(58 6 16 / 0.92) 92%
+  ) !important;
+}
+body.v4 .v4-word-sun {
+  color: var(--v4-sun-300);
+}
+body.v4 .v4-word-squiggle {
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 112 16' preserveAspectRatio='none'%3E%3Cpath d='M2 8c9-8 18-8 27 0s18 8 27 0 18-8 27 0 18 8 27 0' fill='none' stroke='%23f8cf6f' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E")
+    left bottom / 100% 0.24em no-repeat;
+  padding-bottom: 0.12em;
+}
+
+/* ---------- Wavy edges and the activity ribbon (added by the build script) ---------- */
+.v4-wave {
+  background: no-repeat center / 100% 100%;
+  display: block;
+  height: 44px;
+  position: relative;
+  z-index: 2;
+}
+.v4-wave--down {
+  margin-bottom: -44px;
+  transform: scaleY(-1);
+}
+.v4-wave--overlap {
+  margin-top: -43px;
+}
+.v4-wave--cream {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 56' preserveAspectRatio='none'%3E%3Cpath d='M0 30C240 2 480 2 720 26s480 26 720 0v30H0Z' fill='%23fbf6ee'/%3E%3C/svg%3E");
+}
+.v4-wave--sun {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 56' preserveAspectRatio='none'%3E%3Cpath d='M0 30C240 2 480 2 720 26s480 26 720 0v30H0Z' fill='%23fdf0d2'/%3E%3C/svg%3E");
+}
+.v4-wave--lake {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 56' preserveAspectRatio='none'%3E%3Cpath d='M0 30C240 2 480 2 720 26s480 26 720 0v30H0Z' fill='%23dff0f6'/%3E%3C/svg%3E");
+}
+
+.v4-ribbon {
+  overflow: hidden;
+  padding: 28px 0;
+}
+.v4-ribbon__band {
+  background: #d0112b;
+  border-block: 2px solid #13202a;
+  color: #fff;
+  font: 700 22px/1 "Bricolage Grotesque", system-ui, sans-serif;
+  margin: 0 -5%;
+  padding: 14px 0;
+  transform: rotate(-2deg);
+}
+.v4-ribbon__track {
+  animation: v4-marquee 50s linear infinite;
+  display: flex;
+  width: max-content;
+}
+.v4-ribbon__track:hover {
+  animation-play-state: paused;
+}
+.v4-ribbon ul {
+  align-items: center;
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.v4-ribbon li {
+  align-items: center;
+  display: flex;
+  white-space: nowrap;
+}
+.v4-ribbon li span {
+  padding: 0 20px;
+}
+.v4-ribbon li svg {
+  color: #f8cf6f;
+  flex: none;
+  height: 16px;
+  width: 16px;
+}
+@keyframes v4-marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .v4-ribbon__track {
+    animation: none;
+  }
+}
+
+/* ---------- Welcome ---------- */
+body.v4 .elementor-element.elementor-element-95ee5d7 {
+  background-color: transparent !important;
+}
+body.v4 :is(.elementor-element-cf60ed8, .elementor-element-b67d1dc, .elementor-element-533fa41, .elementor-element-384afcf)
+  > .elementor-widget-container {
+  isolation: isolate;
+  position: relative;
+}
+/* A color blob behind each shaped photo, plus a sparkle. */
+body.v4 :is(.elementor-element-cf60ed8, .elementor-element-b67d1dc, .elementor-element-533fa41, .elementor-element-384afcf)
+  > .elementor-widget-container::before {
+  background: var(--v4-blob, var(--v4-sun-300));
+  border-radius: 46% 54% 42% 58% / 52% 44% 56% 48%;
+  content: "";
+  inset: 16% -2% -2% 10%;
+  position: absolute;
+  transform: rotate(-6deg);
+  z-index: -1;
+}
+body.v4 :is(.elementor-element-cf60ed8, .elementor-element-b67d1dc, .elementor-element-533fa41, .elementor-element-384afcf)
+  > .elementor-widget-container::after {
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23d0112b' d='M12 0c.9 6.4 4.6 10.2 12 12-7.4 1.8-11.1 5.6-12 12-.9-6.4-4.6-10.2-12-12C7.4 10.2 11.1 6.4 12 0Z'/%3E%3C/svg%3E")
+    center / contain no-repeat;
+  content: "";
+  height: 44px;
+  left: 2%;
+  position: absolute;
+  top: 14%;
+  width: 44px;
+}
+body.v4 :is(.elementor-element-533fa41, .elementor-element-384afcf) {
+  --v4-blob: var(--v4-coral-300);
+}
+/* Keep the blobs and tilted tiles from widening the page. */
+body.v4 :is(.elementor-element-95ee5d7, .elementor-element-591ced0, .elementor-element-bcf2712) {
+  overflow-x: clip !important;
+}
+
+/* ---------- Programs ---------- */
+body.v4 .elementor-element.elementor-element-5006684 {
+  background-color: var(--v4-sun-100) !important;
+}
+body.v4 .elementor-element-c7f367e > .e-con {
+  --border-radius: 28px;
+  border: 2px solid var(--v4-ink) !important;
+  border-radius: 28px !important;
+  box-shadow: var(--v4-hard) !important;
+}
+body.v4 .elementor-element-c7f367e > .e-con:hover {
+  box-shadow: var(--v4-hard-lg) !important;
+}
+body.v4 .elementor-element-c7f367e > .e-con:nth-child(1) {
+  background-color: var(--v4-lake-200) !important;
+}
+body.v4 .elementor-element-c7f367e > .e-con:nth-child(2) {
+  background-color: var(--v4-sun-300) !important;
+}
+body.v4 .elementor-element-c7f367e > .e-con:nth-child(3) {
+  background-color: var(--v4-coral-200) !important;
+}
+body.v4 .elementor-element-c7f367e img {
+  border-radius: 18px !important;
+}
+body.v4 :is(.elementor-element-c7f367e, .elementor-element-87c0020) .main_bg_con {
+  background-color: transparent !important;
+}
+body.v4 .elementor-element-c7f367e span.elementor-heading-title {
+  color: var(--v4-ink-soft) !important;
+  font-weight: 700 !important;
+}
+body.v4 :is(.elementor-element-c7f367e, .elementor-element-87c0020) :is(h3, h3 a) {
+  color: var(--v4-ink) !important;
+  font-weight: 700 !important;
+}
+body.v4 :is(.elementor-element-c7f367e, .elementor-element-87c0020) .elementor-button {
+  color: var(--v4-ink) !important;
+  font-weight: 800 !important;
+}
+
+/* ---------- Counters become colored stickers ---------- */
+body.v4 .elementor-element.elementor-element-bcf2712 {
+  background-color: transparent !important;
+}
+body.v4 .elementor-element-bcf2712 .elementor-widget-counter {
+  background: var(--v4-tile, var(--v4-sun-300));
+  border: 2px solid var(--v4-ink);
+  border-radius: 28px;
+  box-shadow: var(--v4-hard);
+  padding: 22px 24px;
+  transform: rotate(var(--v4-tilt, -2deg));
+}
+body.v4 .elementor-element-442de08 {
+  --v4-tile: var(--v4-lake-200);
+  --v4-tilt: 1deg;
+}
+body.v4 .elementor-element-5fa0a81 {
+  --v4-tile: var(--v4-coral-200);
+  --v4-tilt: -1deg;
+}
+body.v4 .elementor-element-5a489f3 {
+  --v4-tile: var(--v4-red);
+  --v4-tilt: 2deg;
+}
+body.v4 .elementor-element-bcf2712 .elementor-counter-number-wrapper {
+  color: var(--v4-ink) !important;
+  font-weight: 800 !important;
+}
+body.v4 .elementor-element-bcf2712 .elementor-counter-title {
+  color: var(--v4-ink-soft) !important;
+  font-weight: 600 !important;
+}
+body.v4 .elementor-element-5a489f3 :is(.elementor-counter-number-wrapper, .elementor-counter-title) {
+  color: #fff !important;
+}
+
+/* ---------- Mission ---------- */
+body.v4 .elementor-element.elementor-element-591ced0 {
+  background-color: var(--v4-lake-100) !important;
+}
+
+/* ---------- "Together, We Can Make a Difference" band ---------- */
+body.v4 .elementor-element.elementor-element-1030bb4::before {
+  background-color: transparent !important;
+  background-image: linear-gradient(120deg, rgb(126 10 26 / 0.9), rgb(208 17 43 / 0.72)) !important;
+  opacity: 1 !important;
+}
+
+/* ---------- Blog ---------- */
+body.v4 .elementor-element.elementor-element-c07b29c {
+  background-color: transparent !important;
+}
+body.v4 .elementor-element-87c0020 .e-loop-item > .e-con {
+  --border-radius: 28px;
+  border: 2px solid var(--v4-ink) !important;
+  border-radius: 28px !important;
+  box-shadow: var(--v4-hard) !important;
+  overflow: hidden;
+}
+body.v4 .elementor-element-87c0020 .e-loop-item:nth-child(3n + 1) > .e-con {
+  background-color: var(--v4-coral-100) !important;
+}
+body.v4 .elementor-element-87c0020 .e-loop-item:nth-child(3n + 2) > .e-con {
+  background-color: var(--v4-lake-100) !important;
+}
+body.v4 .elementor-element-87c0020 .e-loop-item:nth-child(3n) > .e-con {
+  background-color: var(--v4-sun-100) !important;
+}
+
+/* ---------- Footer ---------- */
+.v4-stripe {
+  background: linear-gradient(90deg, #d0112b 0 25%, #f8cf6f 25% 50%, #9fd3e6 50% 75%, #ffae8d 75% 100%);
+  height: 10px;
+}
+body.v4 .elementor-element.elementor-element-2762c03 {
+  background-color: var(--v4-ink) !important;
+}
+body.v4 .elementor-element.elementor-element-5c769d0 {
+  background-color: #0c151c !important;
+}
+body.v4 :is(.elementor-element-4b5bec2, .elementor-element-748e205, .elementor-element-2aa518f, .elementor-element-a78c4aa)
+  h4::after {
+  background: var(--v4-sun-300) !important;
+}
+
+/* ---------- Phones ---------- */
+@media (max-width: 767px) {
+  .v4-wave {
+    height: 28px;
+  }
+  .v4-wave--down {
+    margin-bottom: -28px;
+  }
+  .v4-wave--overlap {
+    margin-top: -27px;
+  }
+  .v4-ribbon {
+    padding: 20px 0;
+  }
+  .v4-ribbon__band {
+    font-size: 17px;
+    padding: 11px 0;
+  }
+  body.v4 .elementor-element-bcf2712 .elementor-widget-counter {
+    padding: 16px 18px;
+  }
+  body.v4 .elementor-element-5b44acb .elementor-icon-list-text {
+    font-size: 13px !important;
+  }
+}
