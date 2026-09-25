@@ -107,7 +107,6 @@ body.v4 .elementor-element.elementor-element-55b5d79 {
 /* ---------- Section labels (the heart + text above each heading) become stickers ---------- */
 body.v4
   :is(
-    .elementor-element-5b44acb,
     .elementor-element-f46c92c,
     .elementor-element-5e43027,
     .elementor-element-6dcc8b4,
@@ -125,7 +124,6 @@ body.v4
 }
 body.v4
   :is(
-    .elementor-element-5b44acb,
     .elementor-element-f46c92c,
     .elementor-element-5e43027,
     .elementor-element-6dcc8b4,
@@ -351,8 +349,5 @@ body.v4 :is(.elementor-element-4b5bec2, .elementor-element-748e205, .elementor-e
   }
     .v4-wave--overlap {
     margin-top: -27px;
-  }
-  body.v4 .elementor-element-5b44acb .elementor-icon-list-text {
-    font-size: 13px !important;
   }
 }
