@@ -285,13 +285,6 @@ body.v4 .elementor-element.elementor-element-591ced0 {
   background-color: var(--v4-lake-100) !important;
 }
 
-/* ---------- "Together, We Can Make a Difference" band ---------- */
-body.v4 .elementor-element.elementor-element-1030bb4::before {
-  background-color: transparent !important;
-  background-image: linear-gradient(120deg, rgb(126 10 26 / 0.9), rgb(208 17 43 / 0.72)) !important;
-  opacity: 1 !important;
-}
-
 /* ---------- Blog ---------- */
 body.v4 .elementor-element.elementor-element-c07b29c {
   background-color: transparent !important;
