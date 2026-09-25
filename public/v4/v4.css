@@ -239,6 +239,16 @@ body.v4 :is(.elementor-element-95ee5d7, .elementor-element-591ced0) {
   overflow-x: clip !important;
 }
 
+/* In the mission section, the sparkle sits on the photo's top-left corner. */
+body.v4 .elementor-element-533fa41 > .elementor-widget-container::after {
+  left: -20px;
+  top: 8px;
+}
+body.v4 .elementor-element-384afcf > .elementor-widget-container::after {
+  left: -14px;
+  top: -18px;
+}
+
 /* ---------- Programs ---------- */
 body.v4 .elementor-element.elementor-element-5006684 {
   background-color: var(--v4-sun-100) !important;
@@ -288,6 +298,12 @@ body.v4 .elementor-element.elementor-element-591ced0 {
 /* ---------- Blog ---------- */
 body.v4 .elementor-element.elementor-element-c07b29c {
   background-color: transparent !important;
+}
+/* Lift the kids-in-a-circle photo (bottom right) so the kids aren't cut off (desktop). */
+@media (min-width: 1025px) {
+  body.v4 .elementor-element.elementor-element-c07b29c:not(.elementor-motion-effects-element-type-background) {
+    background-position: 100% 100% !important;
+  }
 }
 body.v4 .elementor-element-87c0020 .e-loop-item > .e-con {
   --border-radius: 28px;
