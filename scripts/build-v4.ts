@@ -42,24 +42,10 @@ edit(
 // <body>: a class to scope the styles.
 edit(/<body class="/, '<body class="v4 ');
 
-
-// Headings: color a word or two.
+// Hero heading: color two words.
 edit(
   ">Serving With Heart, Growing With Purpose</h1>",
   '>Serving With <span class="v4-word-sun">Heart</span>, Growing With <span class="v4-word-highlight">Purpose</span></h1>',
-);
-
-edit(
-  ">Together, We Can Make a Difference</h3>",
-  '>Together, We Can Make a <span class="v4-word-squiggle">Difference</span></h3>',
-);
-
-// Counters: the export didn't include Elementor's counter script, so the numbers stuck at their
-// starting values (30, 0, 1000, 0). Show the real totals.
-edit(
-  /(<span class="elementor-counter-number"[^>]*data-to-value=")(\d+)("[^>]*data-from-value=")\d+("[^>]*>)[\d,]*(<\/span>)/g,
-  (_m, a, to, b, c, d) => `${a}${to}${b}${to}${c}${Number(to).toLocaleString("en-US")}${d}`,
-  4,
 );
 
 // A wavy edge under the hero.
