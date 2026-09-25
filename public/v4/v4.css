@@ -98,28 +98,7 @@ body.v4 .elementor-element-6f2236c .elementor-heading-title {
   font-weight: 400 !important;
 }
 
-/* ---------- Preview banner (added by the build script) ---------- */
-.v4-banner {
-  background: #f6b93b;
-  color: #13202a;
-  font: 600 13px/1.5 "Figtree", system-ui, sans-serif;
-  padding: 7px 16px;
-  text-align: center;
-}
-.v4-banner a {
-  color: inherit;
-  font-weight: 800;
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-
 /* ---------- Header ---------- */
-body.v4 .elementor-element.elementor-element-97cacbb {
-  background-color: var(--v4-red) !important;
-}
-body.v4 .elementor-element-2a62cad .elementor-social-icon {
-  background-color: rgb(255 255 255 / 0.18) !important;
-}
 body.v4 .elementor-element.elementor-element-55b5d79 {
   background-color: var(--v4-cream) !important;
   border-bottom: 2px solid var(--v4-ink) !important;

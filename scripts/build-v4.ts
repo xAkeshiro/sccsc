@@ -27,11 +27,7 @@ function edit(find: string | RegExp, replace: string | ((match: string, ...group
 const wave = (tone: string, direction: "up", extra = "") =>
   `<div aria-hidden="true" class="v4-wave v4-wave--${tone} v4-wave--${direction}${extra ? ` ${extra}` : ""}"></div>`;
 
-const banner =
-  '<div class="v4-banner">Design preview v4: the current sccsc.org home page with more color. Not the official website. ' +
-  'Compare the <a href="/">current site</a>, <a href="/demo">v2</a> or <a href="/v3">v3</a>.</div>';
-
-// Home links stay within v4 (before the banner, whose link to the current site must stay).
+// Home links stay within v4.
 edit(/href="\/"/g, 'href="/v4"', 8);
 
 // <head>: preview title, keep it out of search, and load the v4 styles (and fonts) last so they win.
@@ -43,9 +39,8 @@ edit(
     '<link rel="stylesheet" href="/v4/v4.css">\n</head>',
 );
 
-// <body>: a class to scope the styles, and the preview banner.
+// <body>: a class to scope the styles.
 edit(/<body class="/, '<body class="v4 ');
-edit(/(<body[^>]*>)/, `$1\n${banner}`);
 
 
 // Headings: color a word or two.
