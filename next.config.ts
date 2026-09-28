@@ -10,6 +10,10 @@ const nextConfig: NextConfig = {
   },
   // The current WordPress site (a Simply Static export in public/) is served at the root; the
   // redesign lives under /demo. Page URLs like /about-us map to their exported index.html files.
+  // v4 became the home page; keep old /v4 links working.
+  async redirects() {
+    return [{ source: "/v4", destination: "/", permanent: true }];
+  },
   async rewrites() {
     return {
       beforeFiles: [],

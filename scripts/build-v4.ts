@@ -1,15 +1,16 @@
 /**
- * Builds /v4: the current WordPress home page (public/index.html, from the Simply Static export)
- * with more color. The page itself is untouched; this script copies it to public/v4/index.html,
- * links public/v4/v4.css (where nearly all of the restyling lives) and makes a few markup
- * additions a stylesheet can't. Re-run it after refreshing the export:
+ * Builds the site's home page ("v4"): the original WordPress home page (kept at
+ * public/original/index.html, from the Simply Static export, and viewable at /original) with more
+ * color. This script copies it to public/index.html, links public/v4/v4.css (where nearly all of
+ * the restyling lives) and makes a few markup additions a stylesheet can't. Re-run it after
+ * editing v4 or refreshing the export (copy the new export's index.html to public/original/ first):
  *
  *   npm run v4:build
  */
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync } from "node:fs";
 
-const SOURCE = "public/index.html";
-const TARGET = "public/v4/index.html";
+const SOURCE = "public/original/index.html";
+const TARGET = "public/index.html";
 
 let html = readFileSync(SOURCE, "utf8");
 
@@ -27,12 +28,10 @@ function edit(find: string | RegExp, replace: string | ((match: string, ...group
 const wave = (tone: string, direction: "up", extra = "") =>
   `<div aria-hidden="true" class="v4-wave v4-wave--${tone} v4-wave--${direction}${extra ? ` ${extra}` : ""}"></div>`;
 
-// Home links stay within v4.
-edit(/href="\/"/g, 'href="/v4"', 8);
+// The original copy is kept out of search; the live home page isn't.
+edit(/<meta name="robots" content="noindex, nofollow">/, '<meta name="robots" content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large">');
 
-// <head>: preview title, keep it out of search, and load the v4 styles (and fonts) last so they win.
-edit(/<title>[^<]*<\/title>/, "<title>Home (v4 design preview) | Sacramento Chinese Community Service Center</title>");
-edit(/<meta name="robots" content="[^"]*">/, '<meta name="robots" content="noindex, nofollow">');
+// <head>: load the v4 styles (and fonts) last so they win.
 edit(
   "</head>",
   '<link rel="preload" href="/v4/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>' +
@@ -56,6 +55,5 @@ edit(section("2762c03"), `<div aria-hidden="true" class="v4-stripe"></div>${sect
 // Scroll effects (see public/v4/v4.js).
 edit("</body>", '<script src="/v4/v4.js" defer></script>\n</body>');
 
-mkdirSync("public/v4", { recursive: true });
 writeFileSync(TARGET, html);
 console.log(`✓ Wrote ${TARGET} (${Math.round(html.length / 1024)} KB)`);

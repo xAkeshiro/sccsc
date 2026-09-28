@@ -21,9 +21,9 @@ export default function V3Layout({ children }: LayoutProps<"/v3">) {
               v2
             </Link>{" "}
             or the{" "}
-            {/* The current site is static WordPress output, not a Next.js route, so load it in full. */}
-            <a href="/" className="underline underline-offset-2 hover:text-brand-700">
-              current site
+            {/* The original site is static WordPress output, not a Next.js route, so load it in full. */}
+            <a href="/original" className="underline underline-offset-2 hover:text-brand-700">
+              original site
             </a>
           </>
         }
