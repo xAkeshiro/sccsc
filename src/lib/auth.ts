@@ -21,7 +21,8 @@ function authSecret() {
 
 /**
  * Hosts Better Auth will accept as its base URL. Vercel injects the deployment, branch and
- * production hostnames automatically; add a custom domain via AUTH_ALLOWED_HOSTS (comma-separated).
+ * production hostnames automatically, and sccsc.org is listed below; add other custom domains via
+ * AUTH_ALLOWED_HOSTS (comma-separated).
  */
 function allowedHosts() {
   const hosts = [
@@ -29,6 +30,9 @@ function allowedHosts() {
     process.env.VERCEL_BRANCH_URL,
     process.env.VERCEL_PROJECT_PRODUCTION_URL,
     ...(process.env.AUTH_ALLOWED_HOSTS?.split(",") ?? []),
+    // The production domain.
+    "sccsc.org",
+    "www.sccsc.org",
   ];
   // Vercel only routes a *.vercel.app host to this project if it is one of our own aliases.
   if (process.env.VERCEL) hosts.push("*.vercel.app");

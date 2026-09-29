@@ -103,7 +103,7 @@ Preview deployments trust their own `*.vercel.app` hostnames for auth automatica
 
 ### Going live
 
-Until `NEXT_PUBLIC_SITE_LIVE=true`, every page shows a "Redesign preview" banner and sends `noindex` (plus a blocking `robots.txt`), so previews never compete with the real site in search. Set it only when this deployment becomes sccsc.org.
+`.env.production` (committed; the values aren't secret) sets `NEXT_PUBLIC_SITE_LIVE=true` and `NEXT_PUBLIC_SITE_URL=https://sccsc.org` for production builds, and `src/lib/auth.ts` trusts sccsc.org for sign-in. Values set in Vercel's Environment Variables override the file. With `NEXT_PUBLIC_SITE_LIVE` unset (e.g. a local `next dev`), every page sends `noindex` plus a blocking `robots.txt`, and the redesign shows a "Redesign preview" banner.
 
 ## Job boards: Indeed and Google for Jobs
 

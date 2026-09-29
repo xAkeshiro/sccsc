@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
   if (!isLive()) return { rules: { userAgent: "*", disallow: "/" } };
   return {
     rules: { userAgent: "*", allow: "/", disallow: ["/demo", "/api/", "/v3", "/original"] },
-    // The imported WordPress pages keep their Rank Math sitemaps; the redesign has its own.
-    sitemap: [new URL("/sitemap_index.xml", siteUrl()).toString(), new URL("/demo/sitemap.xml", siteUrl()).toString()],
+    // The WordPress pages' Rank Math sitemap. The redesign under /demo stays out of search.
+    sitemap: new URL("/sitemap_index.xml", siteUrl()).toString(),
   };
 }
