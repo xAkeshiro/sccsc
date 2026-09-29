@@ -41,10 +41,18 @@ edit(
 // <body>: a class to scope the styles.
 edit(/<body class="/, '<body class="v4 ');
 
-// Hero heading: color two words.
+// Hero heading: color two words, and wrap every word so it can animate in on its own.
+const heroWords = [
+  "Serving",
+  "With",
+  '<span class="v4-word-sun">Heart</span>,',
+  "Growing",
+  "With",
+  '<span class="v4-word-highlight">Purpose</span>',
+];
 edit(
   ">Serving With Heart, Growing With Purpose</h1>",
-  '>Serving With <span class="v4-word-sun">Heart</span>, Growing With <span class="v4-word-highlight">Purpose</span></h1>',
+  `>${heroWords.map((w, i) => `<span class="v4-w" style="--i:${i}">${w}</span>`).join(" ")}</h1>`,
 );
 
 // A wavy edge under the hero.
