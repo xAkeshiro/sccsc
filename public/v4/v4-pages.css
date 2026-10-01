@@ -1,0 +1,160 @@
+/*
+ * v4 look for the site's other pages (generated into public/v4/<page>/ by
+ * scripts/build-v4-pages.ts). Loaded after public/v4/v4.css, which supplies the fonts, colors,
+ * footer and word animations shared with the home page. The build script tags each page's
+ * elements with the classes below.
+ */
+
+/* Headings: heavier section titles, like the home page (not inside cards). */
+body.v4-page :is(h1, h2):not(.v4-card *):not(.e-loop-item *) {
+  font-weight: 800 !important;
+  letter-spacing: -0.5px !important;
+}
+
+/* Some sections (progress bars, an unstyled testimonial carousel) spill past the screen edge on
+   the original pages; keep them from making the page scroll sideways. */
+body.v4-page
+  :is(
+    [data-elementor-type="wp-page"],
+    [data-elementor-type="wp-post"],
+    [data-elementor-type="single-post"],
+    [data-elementor-type="archive"]
+  )
+  > .e-parent {
+  overflow-x: clip;
+}
+
+/* ---------- Photo banner ---------- */
+/* The same warm overlay as the home hero, in place of each banner's own overlay color. */
+body.v4-page .elementor-element.v4-hero::before {
+  background-color: transparent !important;
+  background-image: linear-gradient(
+    280deg,
+    rgb(126 10 26 / 0) 24%,
+    rgb(126 10 26 / 0.6) 55%,
+    rgb(58 6 16 / 0.92) 92%
+  ) !important;
+  opacity: 1 !important;
+}
+
+/* ---------- Section labels become stickers ---------- */
+body.v4-page .v4-label .elementor-icon-list-item {
+  background: var(--v4-sticker, #fff);
+  border: 2px solid var(--v4-ink);
+  border-radius: 999px;
+  box-shadow: var(--v4-hard-sm);
+  display: inline-flex !important;
+  padding: 5px 16px 5px 10px !important;
+  width: auto !important;
+}
+body.v4-page .v4-label .elementor-icon-list-text {
+  color: var(--v4-ink) !important;
+  font-weight: 700 !important;
+}
+body.v4-page .v4-label--sun {
+  --v4-sticker: var(--v4-sun-300);
+}
+body.v4-page .v4-label--coral {
+  --v4-sticker: var(--v4-coral-200);
+}
+body.v4-page .v4-label--lake {
+  --v4-sticker: var(--v4-lake-200);
+}
+
+/* ---------- Heading highlights replace the red brush stroke ---------- */
+body.v4-page .elementor-element.v4-hl .elementor-heading-title span {
+  background-image: linear-gradient(
+    transparent 50%,
+    var(--v4-hl, var(--v4-sun-300)) 50%,
+    var(--v4-hl, var(--v4-sun-300)) 86%,
+    transparent 86%
+  ) !important;
+  background-position: 0 0 !important;
+  background-size: 100% 100% !important;
+  padding: 0 0.06em !important;
+}
+body.v4-page .v4-hl--coral {
+  --v4-hl: var(--v4-coral-300);
+}
+body.v4-page .v4-hl--lake {
+  --v4-hl: var(--v4-lake-300);
+}
+
+/* ---------- Panels and cards ---------- */
+body.v4-page .elementor-element.v4-panel--sun {
+  background-color: var(--v4-sun-100) !important;
+}
+body.v4-page .elementor-element.v4-panel--lake {
+  background-color: var(--v4-lake-100) !important;
+}
+body.v4-page .elementor-element.v4-card,
+body.v4-page .e-loop-item > .e-con {
+  --border-radius: 28px;
+  border: 2px solid var(--v4-ink) !important;
+  border-radius: 28px !important;
+  box-shadow: var(--v4-hard) !important;
+  overflow: hidden;
+}
+body.v4-page .elementor-element.v4-card--sun {
+  background-color: var(--v4-sun-200) !important;
+}
+body.v4-page .elementor-element.v4-card--lake {
+  background-color: var(--v4-lake-200) !important;
+}
+body.v4-page .elementor-element.v4-card--coral {
+  background-color: var(--v4-coral-200) !important;
+}
+body.v4-page .e-loop-item:nth-child(3n + 1) > .e-con {
+  background-color: var(--v4-coral-100) !important;
+}
+body.v4-page .e-loop-item:nth-child(3n + 2) > .e-con {
+  background-color: var(--v4-lake-100) !important;
+}
+body.v4-page .e-loop-item:nth-child(3n) > .e-con {
+  background-color: var(--v4-sun-100) !important;
+}
+body.v4-page :is(.v4-card, .e-loop-item) :is(.main_bg_con, .e-con) {
+  background-color: transparent !important;
+}
+body.v4-page :is(.v4-card, .e-loop-item) img {
+  border-radius: 18px !important;
+}
+body.v4-page :is(.v4-card, .e-loop-item) span.elementor-heading-title {
+  color: var(--v4-ink-soft) !important;
+}
+
+/* ---------- Motion (skipped when the visitor prefers reduced motion) ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  /* Banner contents rise in one after another on load. */
+  body.v4-page .v4-hero .elementor-widget {
+    animation: v4-rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+  body.v4-page .v4-hero .elementor-widget:nth-child(2) {
+    animation-delay: 0.15s;
+  }
+  body.v4-page .v4-hero .elementor-widget:nth-child(3) {
+    animation-delay: 0.35s;
+  }
+  body.v4-page .v4-hero .elementor-widget:nth-child(n + 4) {
+    animation-delay: 0.5s;
+  }
+
+  /* Scroll reveals, set up by v4-pages.js. */
+  body.v4-page .v4-reveal {
+    opacity: 0;
+    transition:
+      opacity 0.7s ease var(--v4-delay, 0s),
+      translate 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) var(--v4-delay, 0s),
+      scale 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) var(--v4-delay, 0s);
+    translate: 0 28px;
+  }
+  body.v4-page .v4-reveal--zoom {
+    scale: 0.94;
+    translate: 0 16px;
+  }
+  body.v4-page .v4-reveal.v4-in {
+    opacity: 1;
+    scale: none;
+    translate: none;
+  }
+}
