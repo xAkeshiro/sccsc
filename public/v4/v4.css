@@ -183,7 +183,6 @@ body.v4 .v4-word-highlight {
   display: inline-block;
   line-height: 1.05;
   padding: 0 0.14em;
-  transform: rotate(-1.5deg);
 }
 /* ---------- Wavy edge under the hero (added by the build script) ---------- */
 .v4-wave {

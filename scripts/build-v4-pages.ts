@@ -4,7 +4,7 @@
  * originals. Run with `npm run v4:build` (after build-v4.ts).
  *
  * Unlike the home page, these are themed generically. Each page is tagged from its own styles:
- *   - the photo banner at the top (v4-hero): warm overlay, wavy edge, animated heading
+ *   - the photo banner at the top (v4-hero): wavy edge, animated heading (its overlay is unchanged)
  *   - grey panels (v4-panel), white shadowed cards (v4-card) and blog cards: colors and borders
  *   - heart labels above headings (v4-label) and brush-underlined heading words (v4-hl)
  * and styled by public/v4/v4.css (shared with the home page) plus public/v4/v4-pages.css, with
@@ -153,6 +153,11 @@ function build(page: string, pages: string[]) {
     }
   }
   for (const t of tagged) html = addClass(html, t.id, t.cls);
+
+  // The four-color stripe above the footer, as on the home page.
+  const footer = `<div ${tagOf("2762c03")}`;
+  if (!html.includes(footer)) throw new Error(`${page}: footer not found`);
+  html = html.replace(footer, `<div aria-hidden="true" class="v4-stripe"></div>${footer}`);
 
   html = html.replace("</body>", '<script src="/v4/v4-pages.js" defer></script>\n</body>');
 

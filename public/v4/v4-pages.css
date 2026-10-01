@@ -24,19 +24,6 @@ body.v4-page
   overflow-x: clip;
 }
 
-/* ---------- Photo banner ---------- */
-/* The same warm overlay as the home hero, in place of each banner's own overlay color. */
-body.v4-page .elementor-element.v4-hero::before {
-  background-color: transparent !important;
-  background-image: linear-gradient(
-    280deg,
-    rgb(126 10 26 / 0) 24%,
-    rgb(126 10 26 / 0.6) 55%,
-    rgb(58 6 16 / 0.92) 92%
-  ) !important;
-  opacity: 1 !important;
-}
-
 /* ---------- Section labels become stickers ---------- */
 body.v4-page .v4-label .elementor-icon-list-item {
   background: var(--v4-sticker, #fff);
