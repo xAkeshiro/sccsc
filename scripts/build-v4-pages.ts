@@ -1,30 +1,30 @@
 /**
- * Builds v4 previews of every other page: public/<page>/index.html → public/v4/<page>/index.html,
- * so /v4/about-us, /v4/careers, … show the home page's v4 look for review before replacing the
- * originals. Run with `npm run v4:build` (after build-v4.ts).
+ * Builds every other page of the site in the v4 look: public/original/<page>/index.html (the
+ * Simply Static export, viewable at /original/<page>) → public/<page>/index.html.
+ * Run with `npm run v4:build` (after build-v4.ts).
  *
  * Unlike the home page, these are themed generically. Each page is tagged from its own styles:
  *   - the photo banner at the top (v4-hero): wavy edge, animated heading (its overlay is unchanged)
  *   - grey panels (v4-panel), white shadowed cards (v4-card) and blog cards: colors and borders
  *   - heart labels above headings (v4-label) and brush-underlined heading words (v4-hl)
  * and styled by public/v4/v4.css (shared with the home page) plus public/v4/v4-pages.css, with
- * scroll reveals from public/v4/v4-pages.js. Links between pages point at their v4 versions.
+ * scroll reveals from public/v4/v4-pages.js.
  */
 import { existsSync, mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
 const PUBLIC = "public";
-const SKIP_DIRS = new Set(["v4", "original", "wp-content", "wp-includes", "site-scripts", "photos", "brand"]);
+const SOURCE = path.join(PUBLIC, "original");
 const HEART_PATH = 'd="M9.45731';
 const TONES = ["sun", "lake", "coral"] as const;
 const LABEL_TONES = ["sun", "coral", "lake", "white"] as const;
 const PANEL_BACKGROUNDS = ["#F5F5F5", "#F9F9F9", "#F9F9FA"];
 
-function findPages(dir = PUBLIC, found: string[] = []) {
+function findPages(dir = SOURCE, found: string[] = []) {
   for (const name of readdirSync(dir)) {
     const full = path.join(dir, name);
-    if (!statSync(full).isDirectory() || (dir === PUBLIC && SKIP_DIRS.has(name))) continue;
-    if (existsSync(path.join(full, "index.html"))) found.push(path.relative(PUBLIC, full));
+    if (!statSync(full).isDirectory()) continue;
+    if (existsSync(path.join(full, "index.html"))) found.push(path.relative(SOURCE, full));
     findPages(full, found);
   }
   return found.sort();
@@ -65,13 +65,14 @@ function byPosition(html: string, ids: Iterable<string>) {
     .sort((a, b) => a.at - b.at);
 }
 
-function build(page: string, pages: string[]) {
-  let html = readFileSync(path.join(PUBLIC, page, "index.html"), "utf8");
+function build(page: string) {
+  let html = readFileSync(path.join(SOURCE, page, "index.html"), "utf8");
 
-  // Previews stay out of search.
-  html = /<meta name="robots" content="[^"]*">/.test(html)
-    ? html.replace(/<meta name="robots" content="[^"]*">/, '<meta name="robots" content="noindex, nofollow">')
-    : html.replace("</head>", '<meta name="robots" content="noindex, nofollow">\n</head>');
+  // The originals are kept out of search; the live pages aren't.
+  html = html.replace(
+    '<meta name="robots" content="noindex, nofollow">',
+    '<meta name="robots" content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large">',
+  );
 
   html = html.replace(
     "</head>",
@@ -80,8 +81,6 @@ function build(page: string, pages: string[]) {
   );
   html = html.replace(/<body class="/, '<body class="v4 v4-page ');
 
-  // Links between pages stay within the previews (the home page is already v4).
-  for (const p of pages) html = html.split(`href="/${p}/"`).join(`href="/v4/${p}/"`);
 
   // The page's own content starts at its Elementor document (not the header template).
   const docAt = html.search(/data-elementor-type="(wp-page|wp-post|single-post|single-page|archive)"/);
@@ -161,7 +160,7 @@ function build(page: string, pages: string[]) {
 
   html = html.replace("</body>", '<script src="/v4/v4-pages.js" defer></script>\n</body>');
 
-  const target = path.join(PUBLIC, "v4", page, "index.html");
+  const target = path.join(PUBLIC, page, "index.html");
   mkdirSync(path.dirname(target), { recursive: true });
   writeFileSync(target, html);
   return { hero: Boolean(hero), cards: cardIds.size, panels: panelIds.size, labels: labelIndex, highlights: headingIndex };
@@ -169,8 +168,8 @@ function build(page: string, pages: string[]) {
 
 const pages = findPages();
 for (const page of pages) {
-  const r = build(page, pages);
+  const r = build(page);
   console.log(
-    `✓ /v4/${page}  banner:${r.hero ? "yes" : "no"} cards:${r.cards} panels:${r.panels} labels:${r.labels} highlights:${r.highlights}`,
+    `✓ /${page}  banner:${r.hero ? "yes" : "no"} cards:${r.cards} panels:${r.panels} labels:${r.labels} highlights:${r.highlights}`,
   );
 }
