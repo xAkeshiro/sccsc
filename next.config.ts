@@ -14,6 +14,9 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       { source: "/v4", destination: "/", permanent: true },
+      // The volunteer page was renamed from /corps-volunter.
+      { source: "/corps-volunter", destination: "/volunteer", permanent: true },
+      { source: "/original/corps-volunter", destination: "/original/volunteer", permanent: true },
       // The v4 page previews became the live pages; keep their old links working.
       {
         source: "/v4/:page((?!fonts|v4\\.)[^/.]+)/:rest*",
